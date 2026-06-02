@@ -1,0 +1,56 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# Next.js / build output
+.next/
+out/
+build/
+dist/
+
+# Production / misc caches
+.turbo/
+.cache/
+*.tsbuildinfo
+next-env.d.ts
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Testing / coverage
+coverage/
+
+# Raw, un-optimised media exports (per production-plan.md §5 — never ship these)
+_raw/
+**/*_raw.mp4
+
+# Deploy / tooling
+.vercel/
+
+# Claude Code (local, machine-specific settings)
+.claude/settings.local.json
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.idea/
+*.swp
+*.swo
+.vscode/*
+!.vscode/extensions.json
