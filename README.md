@@ -2,7 +2,7 @@
 
 > A cinematic digital shrine for **Karuppu Swamy** — the guardian deity (*kaval deivam*) of Dravidian folk religion — revealed form by form, power by power, through scroll-triggered motion graphics.
 
-This repository is currently in the **planning / pre-build stage**. It holds the design specification, the motion-graphics production plan, and the reference imagery. No application code has been written yet.
+The build is now **underway**. The Next.js application foundation is in place — the "dark sanctum" design system, the type system, a full-screen ritual navigation, and a cinematic scroll-driven home page — built from the reference stills. **Motion graphics (the Flow/Veo clips) are deliberately deferred**; the site currently uses the still imagery with CSS-based motion (drifting embers, reveal-on-scroll) as a stand-in. The repository also holds the design specification, the motion-graphics production plan, and the reference imagery.
 
 ---
 
@@ -14,12 +14,14 @@ The centrepiece is the **Forms gallery**: six named, attested forms of Karuppu, 
 
 | # | Form | Theme | Image |
 |---|------|-------|-------|
-| 01 | Sangili Karuppan | Fire-Red / Ember *(site default)* | `assets/sangili-karuppu.jpeg` |
-| 02 | Periya Karuppu | Molten Copper-Amber | `assets/periya-karuppu.jpeg` |
-| 03 | Chinna Karuppu | Camphor Blue | `assets/chinna-karuppu.jpeg` |
-| 04 | Mangadu Karuppu | Neem Sacred Green | `assets/mangadu-karuppu.jpeg` |
-| 05 | Sangani Baba | Diaspora Indigo-Violet | `assets/sangani-baba.jpeg` |
-| 06 | Vettai Karuppu | Moonlit Steel | `assets/vettai-karuppu.jpeg` |
+| 01 | Sangili Karuppan | Fire-Red / Ember *(site default)* | `assets/img-V1/sangili-karuppu.jpeg` |
+| 02 | Periya Karuppu | Molten Copper-Amber | `assets/img-V1/periya-karuppu.jpeg` |
+| 03 | Chinna Karuppu | Camphor Blue | `assets/img-V1/chinna-karuppu.jpeg` |
+| 04 | Mangadu Karuppu | Neem Sacred Green | `assets/img-V1/mangadu-karuppu.jpeg` |
+| 05 | Sangani Baba | Diaspora Indigo-Violet | `assets/img-V1/sangani-baba.jpeg` |
+| 06 | Vettai Karuppu | Moonlit Steel | `assets/img-V1/vettai-karuppu.jpeg` |
+
+> Served to the app from `public/img/forms/` (copied from `assets/img-V1/`).
 
 ---
 
@@ -27,17 +29,20 @@ The centrepiece is the **Forms gallery**: six named, attested forms of Karuppu, 
 
 ```
 Karuppa/
-├── README.md                  # this file
+├── app/                       # Next.js App Router — layout, home, and the 11 routes
+│   ├── layout.tsx             # global shell: fonts, header, footer, metadata
+│   ├── page.tsx               # Home — "The Awakening"
+│   ├── globals.css            # design tokens + Tailwind + per-form theming
+│   └── <section>/page.tsx     # guardian, forms, powers, … about
+├── components/                # ui/ · motion/ · nav/ · home/
+├── content/                   # local content layer (the 6 forms, etc.)
+├── lib/                       # fonts, nav map, helpers
+├── public/img/forms/          # the 6 form stills, served to the app
 ├── docs/
-│   ├── build-spec.md          # full website build specification (content, architecture, design system, stack)
-│   └── production-plan.md     # Google Flow / Veo + Imagen prompt pack and web-wiring plan
-└── assets/                    # reference imagery for the 6 deity forms
-    ├── sangili-karuppu.jpeg
-    ├── periya-karuppu.jpeg
-    ├── chinna-karuppu.jpeg
-    ├── mangadu-karuppu.jpeg
-    ├── sangani-baba.jpeg
-    └── vettai-karuppu.jpeg
+│   ├── build-spec.md          # full website build specification
+│   └── production-plan.md     # Google Flow / Veo + Imagen prompt pack and wiring plan
+├── generate/                  # copy-paste Flow prompt pack
+└── assets/                    # source reference imagery (img-V1, img-v2)
 ```
 
 ---
@@ -53,6 +58,19 @@ As specified in [`docs/build-spec.md`](docs/build-spec.md):
 - **CMS:** Sanity / Strapi / Payload (the dynamic content layer)
 - **Media:** Cloudinary / Mux for video hosting and transcoding
 - **Deploy:** Vercel + CDN
+
+---
+
+## Running locally
+
+```bash
+npm install      # install dependencies
+npm run dev      # start the dev server at http://localhost:3000
+npm run build    # production build
+npm run typecheck
+```
+
+> **Implemented so far (Baseline 1):** Next.js + TypeScript + Tailwind v4, the dark-sanctum tokens and fonts, the ritual navigation shell, and the home page. The other ten routes are live but stubbed pending the content and motion baselines. CMS, maps, and the Flow video pipeline from the spec are not wired yet.
 
 ---
 

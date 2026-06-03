@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+/* ===========================================================================
+   Karuppa — "dark sanctum" design system
+   Palette + type tokens from docs/build-spec.md §4.1–4.2
+   Per-form theming from docs/production-plan.md §6.3
+   =========================================================================== */
+
+@theme {
+  /* ---- Palette ("dark sanctum") ---- */
+  --color-void: #0a0a0b;     /* page background */
+  --color-stone: #15110e;    /* cards / panels */
+  --color-karuppu: #1c1c1e;  /* deity mass */
+  --color-fire: #c1272d;     /* primary accent — justice, kumkum */
+  --color-ember: #ff6b1a;    /* hover / glow / particles */
+  --color-ashgold: #d4a24e;  /* sacred / ornaments / headings */
+  --color-sacred: #ede6d8;   /* body text — thiruneeru ash */
+  --color-blood: #5c0a0a;    /* deep shadows / gradients */
+
+  /* ---- Type (families wired in lib/fonts.ts via next/font) ---- */
+  --font-display: var(--font-cinzel), "Times New Roman", serif;
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-tamil: var(--font-catamaran), "Noto Sans Tamil", sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+}
+
+/* The active accent is a live CSS variable so the page can recolour per form.
+   `inline` makes the utility resolve var(--accent) at use-site, not at build. */
+@theme inline {
+  --color-accent: var(--accent);
+  --color-glow: var(--glow);
+}
+
+/* ---------------------------------------------------------------------------
+   Per-form accent themes — Fire-Red (Sangili) is the site-wide default.
+   A `data-form` attribute on any ancestor recolours everything beneath it.
+--------------------------------------------------------------------------- */
+:root {
+  --accent: #c1272d;
+  --glow: #ff6b1a;
+}
+[data-form="sangili"] { --accent: #c1272d; --glow: #ff6b1a; }
+[data-form="periya"]  { --accent: #ff7a1a; --glow: #a8400e; }
+[data-form="chinna"]  { --accent: #2fa9e0; --glow: #9ce0ff; }
+[data-form="mangadu"] { --accent: #2e8b57; --glow: #6fe0a0; }
+[data-form="sangani"] { --accent: #6a3da8; --glow: #a06cd5; }
+[data-form="vettai"]  { --accent: #88a0b4; --glow: #cbd9e4; }
+
+/* ---------------------------------------------------------------------------
+   Base
+--------------------------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background-color: var(--color-void);
+    color: var(--color-sacred);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-fire);
+    color: var(--color-sacred);
+  }
+  /* Thin ritual scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-blood) var(--color-void);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Motion — CSS-only stand-ins for the (deferred) Flow/Veo clips
+--------------------------------------------------------------------------- */
+@keyframes ember-rise {
+  0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+  12%  { opacity: var(--ember-opacity, 0.7); }
+  88%  { opacity: calc(var(--ember-opacity, 0.7) * 0.5); }
+  100% { transform: translateY(-110vh) translateX(var(--drift, 24px)) scale(0.35); opacity: 0; }
+}
+
+@keyframes scroll-cue {
+  0%, 100% { transform: scaleY(0.4); opacity: 0.3; transform-origin: top; }
+  50%      { transform: scaleY(1); opacity: 1; transform-origin: top; }
+}
+
+/* Accessibility — honour the user's reduced-motion preference everywhere. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Small reusable primitives
+--------------------------------------------------------------------------- */
+.hairline {
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    color-mix(in srgb, var(--color-sacred) 22%, transparent),
+    transparent
+  );
+}
