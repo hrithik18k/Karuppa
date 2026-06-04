@@ -109,3 +109,70 @@
     transparent
   );
 }
+
+/* ===========================================================================
+   Atmosphere & "life" — cinematic craft layer (art direction: alive + godly,
+   echoing the 2026 film Karuppu — black + fire, "before the fire awakens")
+   =========================================================================== */
+
+/* Title that ignites out of darkness */
+@keyframes ignite {
+  0%   { opacity: 0; filter: brightness(0.15) blur(10px); transform: translateY(10px); letter-spacing: 0.32em; }
+  55%  { opacity: 1; filter: brightness(1.35) blur(0); }
+  100% { opacity: 1; filter: brightness(1) blur(0); transform: translateY(0); }
+}
+.ignite { animation: ignite 1.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+/* Slow flame gradient drifting across text (fire, no gold per the design system) */
+@keyframes ember-pan { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+.fire-text {
+  background-image: linear-gradient(
+    96deg,
+    var(--color-fire) 0%,
+    var(--color-ember) 38%,
+    #ffd9a8 52%,
+    var(--color-ember) 66%,
+    var(--color-fire) 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: ember-pan 9s ease-in-out infinite;
+}
+
+/* Breathing aura behind the deity — a slow living glow */
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.35; }
+  50%      { transform: scale(1.09); opacity: 0.62; }
+}
+.aura { animation: breathe 7s ease-in-out infinite; }
+
+/* Heat shimmer for the sacred flame */
+@keyframes flame-flicker {
+  0%, 100% { opacity: 0.85; transform: scaleY(1); }
+  25%      { opacity: 1; transform: scaleY(1.06) skewX(-1.5deg); }
+  50%      { opacity: 0.78; transform: scaleY(0.97) skewX(1deg); }
+  75%      { opacity: 0.95; transform: scaleY(1.03) skewX(-0.8deg); }
+}
+
+/* Film grain drift */
+@keyframes grain-shift {
+  0%   { transform: translate(0, 0); }
+  20%  { transform: translate(-3%, -4%); }
+  40%  { transform: translate(3%, -2%); }
+  60%  { transform: translate(-2%, 3%); }
+  80%  { transform: translate(2%, 2%); }
+  100% { transform: translate(0, 0); }
+}
+.grain { animation: grain-shift 8s steps(6) infinite; }
+
+/* Slow ceremonial rotation (kolam / mandala motifs) */
+@keyframes slow-spin { to { transform: rotate(360deg); } }
+.slow-spin { animation: slow-spin 80s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ignite, .fire-text, .aura, .grain, .slow-spin { animation: none !important; }
+  .ignite { opacity: 1; filter: none; transform: none; letter-spacing: normal; }
+  .fire-text { color: var(--color-ember); }
+}

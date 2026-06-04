@@ -6,6 +6,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PillButton } from "@/components/ui/PillButton";
 import { BeliefTag } from "@/components/ui/BeliefTag";
+import { RitualDivider } from "@/components/ui/RitualDivider";
 import { forms } from "@/content/forms";
 
 const teasers = [
@@ -67,7 +68,7 @@ export default function HomePage() {
         </ScrollReveal>
       </section>
 
-      <div className="mx-auto h-px max-w-7xl hairline" />
+      <RitualDivider />
 
       {/* Teaser strips */}
       <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">

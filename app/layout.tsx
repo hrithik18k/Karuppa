@@ -2,6 +2,9 @@ import type { Metadata, Viewport } from "next";
 import { fontVariables } from "@/lib/fonts";
 import { SiteHeader } from "@/components/nav/SiteHeader";
 import { SiteFooter } from "@/components/nav/SiteFooter";
+import { GrainVignette } from "@/components/atmosphere/GrainVignette";
+import { CursorEmber } from "@/components/atmosphere/CursorEmber";
+import { AmbientSound } from "@/components/atmosphere/AmbientSound";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -43,9 +46,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={fontVariables}>
       <body className="min-h-dvh bg-void font-sans text-sacred antialiased">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[80] focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:text-void"
+        >
+          Skip to content
+        </a>
+        <CursorEmber />
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />
+        <GrainVignette />
+        <AmbientSound />
       </body>
     </html>
   );
