@@ -1,16 +1,11 @@
 import type { Metadata } from "next";
-import { PlaceholderPage } from "@/components/ui/PlaceholderPage";
+import { SectionPage } from "@/components/ui/SectionPage";
+import { sections } from "@/content/sections";
 
-export const metadata: Metadata = { title: "Festivals" };
+const data = sections.festivals;
+
+export const metadata: Metadata = { title: data.title, description: data.lead };
 
 export default function FestivalsPage() {
-  return (
-    <PlaceholderPage
-      num="06"
-      eyebrow="Festivals"
-      tamil="திருவிழா"
-      title="The Annual Rite"
-      blurb="Flag hoisting opens it; the village draws inward for three days; the oracle enters trance and the procession moves through fire and drum."
-    />
-  );
+  return <SectionPage data={data} />;
 }

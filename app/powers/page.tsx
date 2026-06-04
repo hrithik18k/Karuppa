@@ -1,16 +1,11 @@
 import type { Metadata } from "next";
-import { PlaceholderPage } from "@/components/ui/PlaceholderPage";
+import { SectionPage } from "@/components/ui/SectionPage";
+import { sections } from "@/content/sections";
 
-export const metadata: Metadata = { title: "The Powers" };
+const data = sections.powers;
+
+export const metadata: Metadata = { title: data.title, description: data.lead };
 
 export default function PowersPage() {
-  return (
-    <PlaceholderPage
-      num="03"
-      eyebrow="The Powers"
-      tamil="சக்திகள்"
-      title="Powers & Abilities"
-      blurb="Guardianship, justice and retribution, protection from black magic, the oracle’s voice, boons for the faithful, and martial valour."
-    />
-  );
+  return <SectionPage data={data} />;
 }

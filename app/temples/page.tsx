@@ -1,16 +1,11 @@
 import type { Metadata } from "next";
-import { PlaceholderPage } from "@/components/ui/PlaceholderPage";
+import { SectionPage } from "@/components/ui/SectionPage";
+import { sections } from "@/content/sections";
 
-export const metadata: Metadata = { title: "Temples" };
+const data = sections.temples;
+
+export const metadata: Metadata = { title: data.title, description: data.lead };
 
 export default function TemplesPage() {
-  return (
-    <PlaceholderPage
-      num="07"
-      eyebrow="Temples"
-      tamil="கோயில்கள்"
-      title="Shrines of the Guardian"
-      blurb="From Azhagar Koil near Madurai — considered the original — to Mettukulam, Tiruverkadu and beyond. A map-driven explorer arrives with the data baseline."
-    />
-  );
+  return <SectionPage data={data} />;
 }

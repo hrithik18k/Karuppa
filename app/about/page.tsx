@@ -1,16 +1,11 @@
 import type { Metadata } from "next";
-import { PlaceholderPage } from "@/components/ui/PlaceholderPage";
+import { SectionPage } from "@/components/ui/SectionPage";
+import { sections } from "@/content/sections";
 
-export const metadata: Metadata = { title: "About" };
+const data = sections.about;
+
+export const metadata: Metadata = { title: data.title, description: data.lead };
 
 export default function AboutPage() {
-  return (
-    <PlaceholderPage
-      num="10"
-      eyebrow="About"
-      tamil="பற்றி"
-      title="Sources & Disclaimer"
-      blurb="Belief kept distinct from scholarship; oral-tradition sources credited; a living faith handled factually and with respect. Full notes arrive soon."
-    />
-  );
+  return <SectionPage data={data} />;
 }

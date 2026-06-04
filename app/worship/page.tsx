@@ -1,16 +1,11 @@
 import type { Metadata } from "next";
-import { PlaceholderPage } from "@/components/ui/PlaceholderPage";
+import { SectionPage } from "@/components/ui/SectionPage";
+import { sections } from "@/content/sections";
 
-export const metadata: Metadata = { title: "Worship" };
+const data = sections.worship;
+
+export const metadata: Metadata = { title: data.title, description: data.lead };
 
 export default function WorshipPage() {
-  return (
-    <PlaceholderPage
-      num="05"
-      eyebrow="Worship"
-      tamil="வழிபாடு"
-      title="Rituals & the Oracle"
-      blurb="Non-Vedic, hereditary priesthood; villu paattu and karakattam; offerings of camphor, milk and more; and the oracle who speaks in trance."
-    />
-  );
+  return <SectionPage data={data} />;
 }
