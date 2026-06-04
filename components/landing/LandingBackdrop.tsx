@@ -48,7 +48,7 @@ export function LandingBackdrop({
               style={
                 {
                   background:
-                    "radial-gradient(70% 60% at 50% 45%, color-mix(in srgb, var(--lglow) 30%, transparent), transparent 72%)",
+                    "radial-gradient(80% 70% at 50% 42%, color-mix(in srgb, var(--lglow) 42%, transparent), transparent 72%)",
                   "--lglow": form.glow,
                 } as CSSProperties
               }
@@ -57,9 +57,17 @@ export function LandingBackdrop({
         </div>
       ))}
 
-      {/* Darken + ground the void so foreground type always reads */}
-      <div className="absolute inset-0 bg-void/78" />
-      <div className="absolute inset-0 bg-gradient-to-b from-void/50 via-transparent to-void" />
+      {/* Veil — keep the blurred fire clearly present; only scrim enough for
+          legible type. Heavy blur keeps the god abstract even at this opacity. */}
+      <div className="absolute inset-0 bg-void/38" />
+      <div className="absolute inset-0 bg-gradient-to-b from-void/45 via-transparent to-void/90" />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(60% 50% at 50% 50%, rgba(10,10,11,0.45), transparent 70%)",
+        }}
+      />
     </div>
   );
 }

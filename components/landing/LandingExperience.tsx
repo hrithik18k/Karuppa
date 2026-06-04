@@ -185,10 +185,10 @@ export function LandingExperience({ forms }: { forms: KaruppuForm[] }) {
               KARUPPA
             </span>
           </h1>
-          <p className="mx-auto mt-7 max-w-xl font-serif text-2xl italic leading-snug text-sacred/85 sm:text-3xl">
+          <p className="mx-auto mt-7 max-w-xl font-serif text-2xl italic leading-snug text-sacred/90 [text-shadow:0_1px_18px_rgba(0,0,0,0.9)] sm:text-3xl">
             Kaval Deivam — the Guardian of Justice.
           </p>
-          <p className="mx-auto mt-5 max-w-md text-base leading-relaxed text-sacred/55">
+          <p className="mx-auto mt-5 max-w-md text-base leading-relaxed text-sacred/65 [text-shadow:0_1px_14px_rgba(0,0,0,0.9)]">
             Descend through the fires. Each is a guardian; none shows his face
             until you enter his sanctum.
           </p>

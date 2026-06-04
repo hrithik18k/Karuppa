@@ -41,13 +41,13 @@ export function Seal({ form }: { form: KaruppuForm }) {
         </span>
       </div>
 
-      <span className="mt-7 font-tamil text-2xl text-sacred md:text-3xl">
+      <span className="mt-7 font-tamil text-2xl text-sacred [text-shadow:0_1px_16px_rgba(0,0,0,0.85)] md:text-3xl">
         {form.tamil}
       </span>
-      <span className="mt-1.5 font-display text-xl font-semibold tracking-wide text-accent md:text-2xl">
+      <span className="mt-1.5 font-display text-xl font-semibold tracking-wide text-accent [text-shadow:0_1px_16px_rgba(0,0,0,0.85)] md:text-2xl">
         {form.name}
       </span>
-      <span className="mt-1.5 text-sm text-sacred/55">
+      <span className="mt-1.5 text-sm text-sacred/70 [text-shadow:0_1px_12px_rgba(0,0,0,0.85)]">
         {form.epithet}
         {form.verify && (
           <>
