@@ -136,15 +136,15 @@ export function AmbientSound() {
       type="button"
       onClick={() => (on ? disable() : enable())}
       aria-pressed={on}
-      aria-label={on ? "Silence the sanctum" : "Light the lamp — enable ambient sound"}
-      title={on ? "Silence the sanctum" : "Light the lamp — ambient sound"}
+      aria-label={on ? "Mute ambient sound" : "Play ambient sound"}
+      title={on ? "Mute ambient sound" : "Play ambient sound"}
       className="group fixed bottom-5 left-5 z-[70] flex items-center gap-2 rounded-full border border-sacred/15 bg-void/70 px-3.5 py-2 backdrop-blur-md transition-colors hover:border-accent/50"
     >
       <span className={on ? "text-accent" : "text-sacred/55"}>
         <Lamp lit={on} className="h-5 w-5" />
       </span>
       <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-sacred/60">
-        {on ? "Sound on" : "Invoke"}
+        {on ? "Sound on" : "Sound off"}
       </span>
     </button>
   );

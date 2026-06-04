@@ -19,6 +19,7 @@ export function MotionSlot({
   quality,
   sizes = "100vw",
   className,
+  mediaClassName,
   children,
 }: {
   src: string;
@@ -30,6 +31,9 @@ export function MotionSlot({
   quality?: number;
   sizes?: string;
   className?: string;
+  /** Extra classes on the media element itself (e.g. brightness/saturate to
+   *  crush a backdrop toward black). Applied to both <Image> and <video>. */
+  mediaClassName?: string;
   /** Overlays — gradients, colour wash, vignette. */
   children?: React.ReactNode;
 }) {
@@ -45,7 +49,8 @@ export function MotionSlot({
           className={cn(
             "absolute inset-0 h-full w-full object-cover",
             kenBurns && "kenburns",
-            blur && "blur-[40px]"
+            blur && "blur-[40px]",
+            mediaClassName
           )}
           style={blur && !kenBurns ? { transform: "scale(1.6)" } : undefined}
         >
@@ -62,7 +67,8 @@ export function MotionSlot({
           className={cn(
             "object-cover",
             kenBurns && "kenburns",
-            blur && "blur-[40px]"
+            blur && "blur-[40px]",
+            mediaClassName
           )}
           style={blur && !kenBurns ? { transform: "scale(1.6)" } : undefined}
         />

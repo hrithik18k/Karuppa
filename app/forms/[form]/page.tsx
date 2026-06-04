@@ -125,7 +125,7 @@ export default async function SanctumPage({
             className="group flex flex-col text-left"
           >
             <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-sacred/40">
-              ← Previous fire
+              ← Previous
             </span>
             <span className="mt-1 font-display text-lg font-semibold text-sacred transition-colors group-hover:text-accent">
               {prev.name}
@@ -135,14 +135,14 @@ export default async function SanctumPage({
             href="/"
             className="shrink-0 font-mono text-[10px] uppercase tracking-[0.25em] text-sacred/50 transition-colors hover:text-accent"
           >
-            The Threshold
+            Home
           </Link>
           <Link
             href={`/forms/${next.id}`}
             className="group flex flex-col text-right"
           >
             <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-sacred/40">
-              Next fire →
+              Next →
             </span>
             <span className="mt-1 font-display text-lg font-semibold text-sacred transition-colors group-hover:text-accent">
               {next.name}

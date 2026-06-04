@@ -164,7 +164,7 @@ export function LandingExperience({ forms }: { forms: KaruppuForm[] }) {
         <div className="max-w-3xl">
           <div className="flex items-center justify-center gap-3">
             <FlameMandala aria-hidden className="h-6 w-6 text-accent/80" />
-            <Eyebrow num="00">The Threshold</Eyebrow>
+            <Eyebrow num="00">Guardian Deity</Eyebrow>
           </div>
           <p
             className="ignite mt-6 font-mono text-xs uppercase tracking-[0.42em] text-accent"
@@ -189,12 +189,12 @@ export function LandingExperience({ forms }: { forms: KaruppuForm[] }) {
             Kaval Deivam — the Guardian of Justice.
           </p>
           <p className="mx-auto mt-5 max-w-md text-base leading-relaxed text-sacred/65 [text-shadow:0_1px_14px_rgba(0,0,0,0.9)]">
-            Descend through the fires. Each is a guardian; none shows his face
-            until you enter his sanctum.
+            Scroll down through the forms. Each is a guardian; none shows his
+            face until you enter.
           </p>
           <div className="mt-9 flex justify-center">
             <PillButton href="#door-sangili" variant="solid">
-              Begin the descent
+              Begin
             </PillButton>
           </div>
         </div>
@@ -223,8 +223,8 @@ export function LandingExperience({ forms }: { forms: KaruppuForm[] }) {
             More fires await
           </h2>
           <p className="mx-auto mt-5 max-w-md text-base leading-relaxed text-sacred/55">
-            Tradition speaks of a hundred and eight forms. These are the first to
-            be kindled — more guardians will be lit here in time.
+            Tradition speaks of a hundred and eight forms. These are the first —
+            more guardians will be added here in time.
           </p>
         </ScrollReveal>
       </section>
@@ -236,7 +236,7 @@ export function LandingExperience({ forms }: { forms: KaruppuForm[] }) {
             Told with reverence
           </Eyebrow>
           <p className="mx-auto mt-6 max-w-xl font-serif text-xl italic leading-relaxed text-sacred/70 md:text-2xl">
-            A living faith, kept distinct from scholarship — so the telling stays
+            A living faith, kept distinct from scholarship — so the account stays
             both faithful and true.
           </p>
           <div className="mt-9 flex flex-wrap justify-center gap-4">

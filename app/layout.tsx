@@ -3,9 +3,9 @@ import { fontVariables } from "@/lib/fonts";
 import { SiteHeader } from "@/components/nav/SiteHeader";
 import { SiteFooter } from "@/components/nav/SiteFooter";
 import { GrainVignette } from "@/components/atmosphere/GrainVignette";
-import { CursorEmber } from "@/components/atmosphere/CursorEmber";
 import { AmbientSound } from "@/components/atmosphere/AmbientSound";
 import { SmoothScroll } from "@/components/landing/SmoothScroll";
+import { SanctumVeil } from "@/components/transitions/SanctumVeil";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -45,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={fontVariables}>
+    <html lang="en" className={fontVariables} suppressHydrationWarning>
       <body className="min-h-dvh bg-void font-sans text-sacred antialiased">
         <a
           href="#main"
@@ -54,7 +54,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <SmoothScroll />
-        <CursorEmber />
+        <SanctumVeil />
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />

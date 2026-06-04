@@ -45,8 +45,7 @@ export function SiteHeader() {
             aria-controls="ritual-menu"
             className="group flex items-center gap-3 font-mono text-xs uppercase tracking-[0.25em] text-sacred/80 transition-colors hover:text-accent"
           >
-            <span className="hidden sm:inline">Enter the Sanctum</span>
-            <span className="sm:hidden">Menu</span>
+            <span>Menu</span>
             <span aria-hidden className="flex flex-col gap-[3px]">
               <span className="block h-px w-5 bg-current transition-all group-hover:w-6" />
               <span className="block h-px w-5 bg-current" />

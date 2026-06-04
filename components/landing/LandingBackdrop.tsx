@@ -42,13 +42,14 @@ export function LandingBackdrop({
             priority={i === 0}
             quality={30}
             className="absolute inset-0 h-full w-full"
+            mediaClassName="brightness-[0.38] saturate-[0.62] contrast-[1.06]"
           >
             <div
               className="absolute inset-0"
               style={
                 {
                   background:
-                    "radial-gradient(80% 70% at 50% 42%, color-mix(in srgb, var(--lglow) 42%, transparent), transparent 72%)",
+                    "radial-gradient(62% 52% at 50% 40%, color-mix(in srgb, var(--lglow) 16%, transparent), transparent 66%)",
                   "--lglow": form.glow,
                 } as CSSProperties
               }
@@ -57,15 +58,24 @@ export function LandingBackdrop({
         </div>
       ))}
 
-      {/* Veil — keep the blurred fire clearly present; only scrim enough for
-          legible type. Heavy blur keeps the god abstract even at this opacity. */}
-      <div className="absolute inset-0 bg-void/38" />
-      <div className="absolute inset-0 bg-gradient-to-b from-void/45 via-transparent to-void/90" />
+      {/* Veil — the god is swallowed by the dark; only a faint, desaturated ghost
+          and a low ember core survive. Heavy enough that the page reads near-black
+          (a *glimpse*, not a portrait), light enough that the fire still breathes. */}
+      <div className="absolute inset-0 bg-void/55" />
+      <div className="absolute inset-0 bg-gradient-to-b from-void/75 via-void/35 to-void/95" />
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(60% 50% at 50% 50%, rgba(10,10,11,0.45), transparent 70%)",
+            "radial-gradient(70% 60% at 50% 50%, rgba(10,10,11,0.62), rgba(10,10,11,0.18) 55%, transparent 78%)",
+        }}
+      />
+      {/* A single faint ember core so the void still has a heartbeat. */}
+      <div
+        className="aura absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(36% 30% at 50% 46%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%)",
         }}
       />
     </div>

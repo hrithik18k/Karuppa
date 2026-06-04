@@ -58,7 +58,7 @@ export function Seal({ form }: { form: KaruppuForm }) {
       </span>
 
       <span className="mt-5 inline-flex items-center gap-2 rounded-full border border-sacred/15 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.25em] text-sacred/60 transition-colors duration-300 group-hover:border-accent group-hover:text-accent group-focus-visible:border-accent">
-        Enter the sanctum
+        Enter
         <span
           aria-hidden
           className="transition-transform duration-300 group-hover:translate-x-1"

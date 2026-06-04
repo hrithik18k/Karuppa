@@ -81,14 +81,14 @@ export function SectionPage({ data }: { data: SectionContent }) {
       {/* Surf onward */}
       <section className="mx-auto max-w-6xl px-6 pb-28">
         <div className="flex flex-wrap items-center justify-between gap-6">
-          <PillButton href="/">Return to the Threshold</PillButton>
+          <PillButton href="/">Back to home</PillButton>
           {next && (
             <Link
               href={next.href}
               className="group flex flex-col items-end text-right"
             >
               <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-sacred/40">
-                Next chapter →
+                Next →
               </span>
               <span className="mt-1 font-display text-xl font-semibold text-sacred transition-colors group-hover:text-accent">
                 {next.label}

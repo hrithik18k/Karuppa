@@ -11,7 +11,7 @@ import { KolamStar } from "@/components/icons";
 export const metadata: Metadata = {
   title: "The Forms",
   description:
-    "An index of the fires — each guardian a glowing sigil, not a portrait. Enter a seal to witness the god in his sanctum.",
+    "An index of the forms — each guardian a glowing sigil, not a portrait. Open one to see the god.",
 };
 
 /**
@@ -37,8 +37,8 @@ export default function FormsIndexPage() {
             The Fires
           </SectionHeading>
           <p className="mx-auto mt-8 max-w-2xl font-serif text-xl italic leading-relaxed text-sacred/75 md:text-2xl">
-            One deity, many fires. Each is a sigil, not a portrait — step through
-            a seal to witness the god.
+            One deity, many forms. Each is a sigil, not a portrait — open one to
+            see the god.
           </p>
         </div>
       </section>
@@ -65,10 +65,10 @@ export default function FormsIndexPage() {
         </div>
         <p className="mt-6 flex items-center justify-center gap-2 text-sm text-sacred/50">
           <BeliefTag kind="belief" /> Tradition speaks of 108 forms. More fires
-          will be kindled here.
+          will be added here.
         </p>
         <div className="mt-8 flex justify-center">
-          <PillButton href="/">Return to the Threshold</PillButton>
+          <PillButton href="/">Back to home</PillButton>
         </div>
       </section>
     </>

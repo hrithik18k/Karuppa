@@ -4,7 +4,7 @@ import { LandingExperience } from "@/components/landing/LandingExperience";
 
 export const metadata: Metadata = {
   description:
-    "Descend through the fires of Karuppu Swamy — a dark, cinematic threshold where each guardian is a sigil, not a portrait. Enter a fire to witness the god.",
+    "A dark, cinematic shrine for Karuppu Swamy — each guardian is a sigil, not a portrait. Open one to see the god.",
 };
 
 /**
