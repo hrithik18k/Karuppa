@@ -2,8 +2,9 @@
  * The 6 named, attested forms of Karuppu Swamy (build-spec.md §1.3, §3.1).
  *
  * Tradition speaks of 108 forms — that number is devotional [BELIEF], not documented.
- * These six are the real, attested catalogue; each carries its own colour theme on
- * near-black so the gallery reads as one deity across a spectrum of light.
+ * These six are the real, attested catalogue. In the monochrome direction (plan.md §7)
+ * the gods carry no colour — only a NAME and a MOTION. The `act` is the brief for each
+ * god's video clip; until the clips exist, the blurred photo stands in.
  */
 
 export type FormId = "sangili" | "periya" | "chinna" | "mangadu" | "sangani" | "vettai";
@@ -19,15 +20,11 @@ export interface KaruppuForm {
   epithet: string;
   /** Where this form is most honoured. */
   region: string;
-  /** Human-readable theme label. */
-  theme: string;
-  accent: string;
-  glow: string;
   /** Card still in /public. */
   image: string;
   /** A reverent one-paragraph description. */
   description: string;
-  /** The divine act this form is known for (drives the deferred motion clip). */
+  /** The divine act this form is known for — the brief for the deferred motion clip. */
   act: string;
   /**
    * Reserved video slot — the god's "motion." Empty for now; drop a path here
@@ -47,9 +44,6 @@ export const forms: KaruppuForm[] = [
     tamil: "சங்கிலி கருப்பன்",
     epithet: "The chain-bound protector",
     region: "Tamil Nadu · Malaysia · Singapore",
-    theme: "Fire-Red / Ember",
-    accent: "#c1272d",
-    glow: "#ff6b1a",
     image: "/img/forms/sangili-karuppu.jpeg",
     description:
       "Bound in heavy iron chains, Sangili Karuppan is the fiercest protective form — the guardian who carries his own restraint as a vow. Borne across the seas by Tamil labourers, he became one of the most beloved deities of the Malaysian and Singaporean diaspora.",
@@ -62,9 +56,6 @@ export const forms: KaruppuForm[] = [
     tamil: "பெரிய கருப்பு",
     epithet: "The great elder",
     region: "Tamil Nadu",
-    theme: "Molten Copper-Amber",
-    accent: "#ff7a1a",
-    glow: "#a8400e",
     image: "/img/forms/periya-karuppu.jpeg",
     description:
       "The elder and greater — larger of frame, fuller of beard, draped in ornate garlands. Periya Karuppu is the commanding presence among the guardians, the senior voice whose word settles disputes and whose stride shakes the ground.",
@@ -77,9 +68,6 @@ export const forms: KaruppuForm[] = [
     tamil: "சின்ன கருப்பு",
     epithet: "The young and swift",
     region: "Tamil Nadu",
-    theme: "Camphor Blue",
-    accent: "#2fa9e0",
-    glow: "#9ce0ff",
     image: "/img/forms/chinna-karuppu.jpeg",
     description:
       "The younger one — lean, alert, agile and swift to answer the call. Where the elder commands, Chinna Karuppu moves: lighter in adornment, quicker in step, cool as the blue-white flame of burning camphor.",
@@ -92,9 +80,6 @@ export const forms: KaruppuForm[] = [
     tamil: "மாங்காடு கருப்பு",
     epithet: "Guardian of the grove",
     region: "Mangadu, Tamil Nadu",
-    theme: "Neem Sacred Green",
-    accent: "#2e8b57",
-    glow: "#6fe0a0",
     image: "/img/forms/mangadu-karuppu.jpeg",
     description:
       "Stationed at the wilderness boundary — the kāṭu — where the village ends and the grove begins, Mangadu Karuppu keeps watch with his sword raised in vigilance. His is the sacred green of the neem, the protector of the threshold.",
@@ -107,9 +92,6 @@ export const forms: KaruppuForm[] = [
     tamil: "சங்கனி பாபா",
     epithet: "The ocean-crossed",
     region: "Trinidad · Guyana · Suriname",
-    theme: "Diaspora Indigo-Violet",
-    accent: "#6a3da8",
-    glow: "#a06cd5",
     image: "/img/forms/sangani-baba.jpeg",
     description:
       "Carried across the kala pani — the dark waters — to the Indo-Caribbean, Karuppu is honoured here as Sangani Baba in folk shrines from Trinidad to Suriname. A guardian who followed his people to the far shore and stayed.",
@@ -123,9 +105,6 @@ export const forms: KaruppuForm[] = [
     tamil: "வேட்டை கருப்பு",
     epithet: "The divine hunter",
     region: "Tamil Nadu",
-    theme: "Moonlit Steel",
-    accent: "#88a0b4",
-    glow: "#cbd9e4",
     image: "/img/forms/vettai-karuppu.jpeg",
     description:
       "The hunter of the night, lean and fierce, who runs down evil with his hunting dog (vettai naai) at his heel and a bow of cold light in hand. His is the spectral grey of moonlit mist and cremation-ground ash.",

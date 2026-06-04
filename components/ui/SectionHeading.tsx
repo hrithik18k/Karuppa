@@ -3,7 +3,8 @@ import { cn } from "@/lib/cn";
 
 /**
  * Cinematic serif heading, paired with its Tamil line above (build-spec.md §4.2).
- * `accent` colours it in the active form's fire instead of ash-white.
+ * Monochrome (plan.md §2): `accent` just sets full-strength ash; default ash too —
+ * hierarchy comes from size and weight, never hue.
  */
 export function SectionHeading({
   tamil,

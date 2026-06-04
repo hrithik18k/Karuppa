@@ -134,19 +134,21 @@ Until clips exist, the blurred **photo** stands in — satisfying the "photo blu
 
 ## 10. Phased roadmap (mapped to actual files)
 
-| Phase | Work | Touches |
-|---|---|---|
-| **0 — Font decision** | Pick Path A/B/C; if A, trace the wordmark SVG | *blocks nothing else* |
-| **1 — Monochrome refactor** | Gut palette to 4 tokens; delete per-form themes, fire-text, aura, CursorEmber, colored EmberField | `app/globals.css`, `content/forms.ts`, `lib/fonts.ts` |
-| **2 — Type system** | Wire wordmark + display font; rebuild `.ignite` as brightness/blur only | `lib/fonts.ts`, `app/layout.tsx`, landing components |
-| **3 — Blur language** | Standardize blur scale (threshold/veil/near) across `MotionSlot` usages | `components/media/MotionSlot.tsx`, landing + gallery |
-| **4 — Pages pass** | Strip color from all 11 routes; swap `/temples` map for typographic atlas | `app/**/page.tsx`, temple components |
-| **5 — Sigils** | Monochrome line-glyph per form to replace color identity | `glyphs.tsx`, `PowerSigil`, forms gallery |
-| **6 — Video** | Generate 6 monochrome `act` clips, host, drop into `video` fields | `content/forms.ts` + provider |
-| **7 — Polish / deploy** | Grain at whisper opacity, Lighthouse, a11y, OG images, Vercel deploy | global |
+| Phase | Work | Touches | Status |
+|---|---|---|---|
+| **0 — Font decision** | Pick Path A/B/C; if A, trace the wordmark SVG | *blocks nothing else* | ⏳ deferred — interim keeps Cinzel/Catamaran; ignite carries the "ignition" |
+| **1 — Monochrome refactor** | Gut palette to 4 tokens; delete per-form themes, fire-text, aura, CursorEmber, colored EmberField | `app/globals.css`, `content/forms.ts`, `lib/fonts.ts` | ✅ done |
+| **2 — Type system** | Wire wordmark + display font; rebuild `.ignite` as brightness/blur only | `lib/fonts.ts`, `app/layout.tsx`, landing components | ✅ `.ignite` rebuilt (no hue); wordmark = ash ignite. SVG wordmark = Phase 0 |
+| **3 — Blur language** | Standardize blur scale (threshold/veil/near) across `MotionSlot` usages | `components/media/MotionSlot.tsx`, landing + gallery | ✅ done — `BlurLevel` scale 48/24/8px |
+| **4 — Pages pass** | Strip color from all 11 routes; swap `/temples` map for typographic atlas | `app/**/page.tsx`, temple components | ✅ done — all hue removed; temples already typographic |
+| **5 — Sigils** | Monochrome line-glyph per form to replace color identity | `glyphs.tsx`, `PowerSigil`, forms gallery | ✅ done — ash mandala sigil + name |
+| **6 — Video** | Generate 6 monochrome `act` clips, host, drop into `video` fields | `content/forms.ts` + provider | ⏳ pending assets — sockets ready (`video?` field + `MotionSlot`) |
+| **7 — Polish / deploy** | Grain at whisper opacity, Lighthouse, a11y, OG images, Vercel deploy | global | ◐ partial — grain dropped to 0.045, light-leak removed; build green. Lighthouse/OG/deploy TODO |
 
 Phases 1–5 need **zero new assets** — pure refinement of what exists, so the new direction is visible immediately. Video (6) layers in over time without touching component code.
 
 ---
 
-**Next step:** decide the font path (A recommended), then execute Phase 1 (monochrome refactor) + Phase 2 (font wiring) — the changes you feel the most.
+**Status (this session):** Phases 1–5 complete; the whole site is monochrome ash-on-`#050505`. `npm run build` + `tsc --noEmit` both green; verified in-browser (landing, god-door sigil, `/forms/[id]` reveal, gallery blur scale, worship). The palette is collapsed to four greyscale tokens (`--void/--ash/--dim/--faint`); the legacy `--color-*` and `--accent/--glow` names survive only as ash aliases so existing utility classes compile without hue. Per-form `accent/glow/theme` are gone from `content/forms.ts` and every page; `CursorEmber`/`EmberField` deleted; `KalaPaniField` spirit-lights kept as ash motion.
+
+**Next steps:** (0) commission/trace the SVG wordmark for the masthead + hero; (6) generate the six monochrome `act` clips and drop paths into the `video?` fields; (7) Lighthouse pass, OG images, Vercel deploy.

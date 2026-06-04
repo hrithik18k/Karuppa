@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { sections } from "@/content/sections";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
-import { EmberField } from "@/components/motion/EmberField";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { BeliefTag } from "@/components/ui/BeliefTag";
@@ -20,15 +18,9 @@ export const metadata: Metadata = { title: data.title, description: data.lead };
 /**
  * Festivals — "The Annual Rite". A bespoke dark chapter staged as a single rite
  * unfolding from first light to the night fire: flag, days, trance, fire &
- * procession. Accent identity: the site fire, deepened toward blood-red for the
- * once-a-year intensity. VERIFY markers on "Three Days" and "Fire & Procession"
- * are preserved.
+ * procession. Monochrome: no colour identity — only ash text, blur, and motion.
+ * VERIFY markers on "Three Days" and "Fire & Procession" are preserved.
  */
-const accentTheme = {
-  ["--accent"]: "#b81f25",
-  ["--glow"]: "#ff5a1a",
-} as CSSProperties;
-
 const stages: RiteStage[] = [
   {
     phase: "First light · the opening",
@@ -62,7 +54,7 @@ const stages: RiteStage[] = [
 
 export default function FestivalsPage() {
   return (
-    <div style={accentTheme}>
+    <div>
       {/* Hero — the night of the rite, gods kept in shadow */}
       <section className="relative flex min-h-[78vh] items-center overflow-hidden">
         {/* Darkened photographic backdrop */}
@@ -79,16 +71,6 @@ export default function FestivalsPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-void via-void/70 to-void/55" />
           <div className="absolute inset-0 bg-gradient-to-r from-void via-void/60 to-transparent" />
         </div>
-        <EmberField className="absolute inset-0" />
-        <div
-          aria-hidden
-          className="aura pointer-events-none absolute bottom-0 left-1/2 h-[55vh] w-[80vw] -translate-x-1/2 translate-y-1/4"
-          style={{
-            background:
-              "radial-gradient(closest-side, color-mix(in srgb, var(--glow) 22%, transparent), transparent)",
-          }}
-        />
-
         <div className="relative z-10 mx-auto w-full max-w-5xl px-6 py-28">
           <Eyebrow num={data.num}>{data.eyebrow}</Eyebrow>
           <SectionHeading
@@ -153,14 +135,6 @@ export default function FestivalsPage() {
 
           <ScrollReveal delay={140}>
             <div className="relative grid place-items-center py-10">
-              <div
-                aria-hidden
-                className="aura absolute h-64 w-64 rounded-full"
-                style={{
-                  background:
-                    "radial-gradient(closest-side, color-mix(in srgb, var(--glow) 30%, transparent), transparent)",
-                }}
-              />
               <FlameMandala
                 aria-hidden
                 rays={24}

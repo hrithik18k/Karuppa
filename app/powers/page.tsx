@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { sections } from "@/content/sections";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
-import { EmberField } from "@/components/motion/EmberField";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { BeliefTag } from "@/components/ui/BeliefTag";
@@ -113,14 +111,8 @@ const powers: Power[] = data.points.map((p, i) => ({
 }));
 
 export default function PowersPage() {
-  // The Powers ARE the fire — its identity is the site-canonical justice-red.
-  const accent = {
-    "--accent": "#c1272d",
-    "--glow": "#ff6b1a",
-  } as CSSProperties;
-
   return (
-    <div style={accent}>
+    <div>
       {/* Hero — a dark invocation: darkened martial backdrop, sigil, the title */}
       <section className="relative flex min-h-[88vh] items-center overflow-hidden">
         <Image
@@ -135,7 +127,6 @@ export default function PowersPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-void via-void/85 to-void/55" />
         <div className="absolute inset-0 bg-gradient-to-t from-void via-void/40 to-void/70" />
-        <EmberField className="absolute inset-0 opacity-70" />
 
         <PowerSigil className="pointer-events-none absolute -right-10 top-1/2 hidden h-[70vh] max-h-[620px] w-[70vh] max-w-[620px] -translate-y-1/2 md:block" />
 

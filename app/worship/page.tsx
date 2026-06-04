@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import type { CSSProperties } from "react";
 import Link from "next/link";
 import { sections } from "@/content/sections";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
-import { EmberField } from "@/components/motion/EmberField";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { BeliefTag } from "@/components/ui/BeliefTag";
@@ -20,13 +18,9 @@ export const metadata: Metadata = { title: data.title, description: data.lead };
 /**
  * Worship — "Rituals & the Oracle". A bespoke dark chapter on a folk, oral,
  * non-Vedic worship: hereditary priesthood, folk-art history, offerings, and —
- * as the dramatic centerpiece — the lamp-lit Oracle (சாமி ஆடுதல்). Accent
- * identity: a warm sacred amber (lamp-and-camphor light), kept dark.
+ * as the dramatic centerpiece — the lamp-lit Oracle (சாமி ஆடுதல்). Monochrome:
+ * no colour identity — only ash text, blur, and the lamp's light.
  */
-const accentTheme = {
-  ["--accent"]: "#d98a2b",
-  ["--glow"]: "#ffae4d",
-} as CSSProperties;
 
 /** The two hereditary, oral pillars before the Oracle descends. */
 const keepers = [
@@ -46,22 +40,13 @@ const keepers = [
 
 export default function WorshipPage() {
   return (
-    <div style={accentTheme}>
+    <div>
       {/* Hero — oral, firelit, lamp at the threshold of the chapter */}
       <section className="relative flex min-h-[72vh] items-center overflow-hidden">
-        <EmberField className="absolute inset-0 opacity-70" />
         <Lamp
           lit
           aria-hidden
-          className="pointer-events-none absolute right-[6%] top-1/2 hidden h-[40vh] max-h-[360px] w-auto -translate-y-1/2 text-accent opacity-[0.10] md:block"
-        />
-        <div
-          aria-hidden
-          className="aura pointer-events-none absolute -right-24 top-1/2 h-[70vh] w-[70vh] -translate-y-1/2"
-          style={{
-            background:
-              "radial-gradient(closest-side, color-mix(in srgb, var(--glow) 16%, transparent), transparent)",
-          }}
+          className="pointer-events-none absolute right-[6%] top-1/2 hidden h-[40vh] max-h-[360px] w-auto -translate-y-1/2 text-sacred opacity-[0.10] md:block"
         />
 
         <div className="relative z-10 mx-auto w-full max-w-5xl px-6 py-28">

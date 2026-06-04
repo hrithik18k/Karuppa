@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { forms, formById } from "@/content/forms";
 import { MotionSlot } from "@/components/media/MotionSlot";
-import { EmberField } from "@/components/motion/EmberField";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { BeliefTag } from "@/components/ui/BeliefTag";
 import { RitualDivider } from "@/components/ui/RitualDivider";
@@ -28,7 +27,7 @@ export async function generateMetadata({
   if (!f) return {};
   return {
     title: f.name,
-    description: `${f.name} (${f.tamil}) — ${f.epithet}. ${f.theme}. ${f.description}`,
+    description: `${f.name} (${f.tamil}) — ${f.epithet}. ${f.description}`,
   };
 }
 
@@ -58,19 +57,11 @@ export default async function SanctumPage({
         >
           <div className="absolute inset-0 bg-gradient-to-r from-void via-void/80 to-void/25" />
           <div className="absolute inset-0 bg-gradient-to-t from-void via-transparent to-void/60" />
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(60% 55% at 70% 50%, color-mix(in srgb, var(--glow) 22%, transparent), transparent 70%)",
-            }}
-          />
         </MotionSlot>
-        <EmberField className="absolute inset-0" />
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6">
           <div className="max-w-2xl">
-            <Eyebrow num={f.num}>{f.theme}</Eyebrow>
+            <Eyebrow num={f.num}>Kaval Deivam</Eyebrow>
             <h1 className="mt-5">
               <span className="block font-tamil text-5xl font-extrabold leading-none text-sacred drop-shadow-[0_2px_24px_rgba(0,0,0,0.85)] sm:text-7xl">
                 {f.tamil}

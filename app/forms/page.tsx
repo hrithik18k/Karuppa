@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { forms } from "@/content/forms";
 import { Seal } from "@/components/landing/Seal";
-import { EmberField } from "@/components/motion/EmberField";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { BeliefTag } from "@/components/ui/BeliefTag";
@@ -23,7 +22,6 @@ export default function FormsIndexPage() {
   return (
     <>
       <section className="relative flex min-h-[56vh] items-center overflow-hidden">
-        <EmberField className="absolute inset-0 opacity-70" />
         <div className="relative z-10 mx-auto w-full max-w-5xl px-6 py-28 text-center">
           <Eyebrow num="02" className="justify-center">
             The Forms
