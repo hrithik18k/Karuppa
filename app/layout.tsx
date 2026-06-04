@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/nav/SiteFooter";
 import { GrainVignette } from "@/components/atmosphere/GrainVignette";
 import { CursorEmber } from "@/components/atmosphere/CursorEmber";
 import { AmbientSound } from "@/components/atmosphere/AmbientSound";
+import { SmoothScroll } from "@/components/landing/SmoothScroll";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -52,6 +53,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        <SmoothScroll />
         <CursorEmber />
         <SiteHeader />
         <main id="main">{children}</main>

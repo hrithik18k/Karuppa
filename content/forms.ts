@@ -29,6 +29,12 @@ export interface KaruppuForm {
   description: string;
   /** The divine act this form is known for (drives the deferred motion clip). */
   act: string;
+  /**
+   * Reserved video slot — the god's "motion." Empty for now; drop a path here
+   * (e.g. "/video/sangili.mp4") later and every MotionSlot for this form plays
+   * it with no code change. The landing shows it blurred; the sanctum, clear.
+   */
+  video?: string;
   /** True where a claim is devotional/unverified and must be tagged on the site. */
   verify?: boolean;
 }

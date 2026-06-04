@@ -171,8 +171,26 @@
 @keyframes slow-spin { to { transform: rotate(360deg); } }
 .slow-spin { animation: slow-spin 80s linear infinite; }
 
+/* Ken Burns drift for the blurred, video-ready backdrops */
+@keyframes kenburns {
+  from { transform: scale(1.6); }
+  to   { transform: scale(1.92) translate3d(-2%, -1.5%, 0); }
+}
+.kenburns { transform: scale(1.72); animation: kenburns 26s ease-in-out infinite alternate; }
+
 @media (prefers-reduced-motion: reduce) {
-  .ignite, .fire-text, .aura, .grain, .slow-spin { animation: none !important; }
+  .ignite, .fire-text, .aura, .grain, .slow-spin, .kenburns { animation: none !important; }
   .ignite { opacity: 1; filter: none; transform: none; letter-spacing: normal; }
   .fire-text { color: var(--color-ember); }
+  .kenburns { transform: scale(1.72); }
 }
+
+/* ===========================================================================
+   Smooth scroll (Lenis) — recommended base styles
+   =========================================================================== */
+html.lenis,
+html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
