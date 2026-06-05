@@ -49,6 +49,12 @@
   --dim: rgba(231, 227, 218, 0.55);   /* secondary text */
   --faint: rgba(231, 227, 218, 0.14); /* hairlines, borders, 1px progress line */
 
+  /* Offline-safe font fallbacks. */
+  --font-cinzel: "Times New Roman";
+  --font-cormorant: Georgia;
+  --font-catamaran: "Noto Sans Tamil";
+  --font-inter: system-ui;
+
   /* Legacy aliases — ash, and a barely-there ash bloom (brightness, not hue). */
   --accent: #e7e3da;
   --glow: rgba(231, 227, 218, 0.1);
