@@ -6,7 +6,7 @@ The build is now **underway**. The Next.js application foundation is in place â€
 
 ---
 
-## What this is
+## What this is 
 
 An "Anniyan-inspired" devotional website concept: a dark, reverent, cinematic experience built around a single consistent murti (temple idol) of Karuppu Swamy. The site is designed as a scroll-driven sanctum where each section unfolds like a ritual â€” borrowing the mood and gravitas of the film, never its violence.
 
