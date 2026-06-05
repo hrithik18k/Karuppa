@@ -1,11 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { fontVariables } from "@/lib/fonts";
-import { GlassNav } from "@/components/nav/GlassNav";
-import { SiteFooter } from "@/components/nav/SiteFooter";
-import { GrainVignette } from "@/components/atmosphere/GrainVignette";
-import { AmbientSound } from "@/components/atmosphere/AmbientSound";
-import { SmoothScroll } from "@/components/landing/SmoothScroll";
-import { SanctumVeil } from "@/components/transitions/SanctumVeil";
+import { AppChrome } from "@/components/layout/AppChrome";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -50,16 +45,10 @@ export default function RootLayout({
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[80] focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:text-void"
-        >
+          >
           Skip to content
         </a>
-        <SmoothScroll />
-        <SanctumVeil />
-        <GlassNav />
-        <main id="main">{children}</main>
-        <SiteFooter />
-        <GrainVignette />
-        <AmbientSound />
+        <AppChrome>{children}</AppChrome>
       </body>
     </html>
   );
