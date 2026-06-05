@@ -1,21 +1,28 @@
 @import "tailwindcss";
 
 /* ===========================================================================
-   Karuppa — "dark sanctum" design system
-   Palette + type tokens from docs/build-spec.md §4.1–4.2
-   Per-form theming from docs/production-plan.md §6.3
+   Karuppa — the black room (plan.md §2)
+   A near-black monochrome shrine. Only three instruments speak: TEXT,
+   VIDEO MOTION, and PHOTO BLUR. Everything else — accent colour, gold, fire
+   gradients, per-form theming, cursor glow — is removed, not muted.
+
+   The whole palette is four greyscale tokens. No hue anywhere in the chrome.
    =========================================================================== */
 
 @theme {
-  /* ---- Palette ("dark sanctum") ---- */
-  --color-void: #0a0a0b;     /* page background */
-  --color-stone: #15110e;    /* cards / panels */
-  --color-karuppu: #1c1c1e;  /* deity mass */
-  --color-fire: #c1272d;     /* primary accent — justice, kumkum */
-  --color-ember: #ff6b1a;    /* hover / glow / particles */
-  --color-ashgold: #d4a24e;  /* sacred / ornaments / headings */
-  --color-sacred: #ede6d8;   /* body text — thiruneeru ash */
-  --color-blood: #5c0a0a;    /* deep shadows / gradients */
+  /* ---- The four-token greyscale (plan.md §2) ----
+     Legacy colour names survive only so the existing utility classes
+     (text-sacred, bg-fire, text-ashgold, …) resolve to ash/void instead of
+     hue. There is no red, gold, blue, green, or violet left in the system. */
+  --color-void: #050505;        /* near-black, not #000 — no banding on video/photo */
+  --color-stone: #111113;       /* cards / panels — a breath above void */
+  --color-karuppu: #18181a;     /* mass / deep panel */
+  --color-blood: #161616;       /* deep shadow / scrollbar thumb (no red) */
+
+  --color-sacred: #e7e3da;      /* ash — the only "light", carries all text */
+  --color-ashgold: #e7e3da;     /* former gold headings → ash */
+  --color-fire: #e7e3da;        /* former accent red → ash (inverted CTAs, markers) */
+  --color-ember: #b8b4ab;       /* former hover glow → dim ash */
 
   /* ---- Type (families wired in lib/fonts.ts via next/font) ---- */
   --font-display: var(--font-cinzel), "Times New Roman", serif;
@@ -24,27 +31,33 @@
   --font-sans: var(--font-inter), system-ui, sans-serif;
 }
 
-/* The active accent is a live CSS variable so the page can recolour per form.
-   `inline` makes the utility resolve var(--accent) at use-site, not at build. */
+/* `accent` / `glow` linger as utilities only to keep old class names compiling.
+   Both now resolve to ash / a faint ash bloom — never a colour. New code should
+   prefer the named tokens below. */
 @theme inline {
   --color-accent: var(--accent);
   --color-glow: var(--glow);
 }
 
 /* ---------------------------------------------------------------------------
-   Per-form accent themes — Fire-Red (Sangili) is the site-wide default.
-   A `data-form` attribute on any ancestor recolours everything beneath it.
+   Canonical tokens. Gods no longer have colours — they have names and motion,
+   so there are no [data-form] themes. Just ash on void.
 --------------------------------------------------------------------------- */
 :root {
-  --accent: #c1272d;
-  --glow: #ff6b1a;
+  --void: #050505;
+  --ash: #e7e3da;
+  --dim: rgba(231, 227, 218, 0.55);   /* secondary text */
+  --faint: rgba(231, 227, 218, 0.14); /* hairlines, borders, 1px progress line */
+
+  /* Legacy aliases — ash, and a barely-there ash bloom (brightness, not hue). */
+  --accent: #e7e3da;
+  --glow: rgba(231, 227, 218, 0.1);
+
+  /* Standardized blur scale — blur itself signals proximity (plan.md §2). */
+  --blur-threshold: 48px; /* landing / deep veil — presence, never a portrait */
+  --blur-veil: 24px;      /* lifted a touch — a form you almost resolve */
+  --blur-near: 8px;       /* on the brink of revelation */
 }
-[data-form="sangili"] { --accent: #c1272d; --glow: #ff6b1a; }
-[data-form="periya"]  { --accent: #ff7a1a; --glow: #a8400e; }
-[data-form="chinna"]  { --accent: #2fa9e0; --glow: #9ce0ff; }
-[data-form="mangadu"] { --accent: #2e8b57; --glow: #6fe0a0; }
-[data-form="sangani"] { --accent: #6a3da8; --glow: #a06cd5; }
-[data-form="vettai"]  { --accent: #88a0b4; --glow: #cbd9e4; }
 
 /* ---------------------------------------------------------------------------
    Base
@@ -55,37 +68,40 @@
     -webkit-text-size-adjust: 100%;
   }
   body {
-    background-color: var(--color-void);
-    color: var(--color-sacred);
+    background-color: var(--void);
+    color: var(--ash);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
+  /* Ash-on-black selection — no fire. */
   ::selection {
-    background: var(--color-fire);
-    color: var(--color-sacred);
+    background: var(--ash);
+    color: var(--void);
   }
-  /* Thin ritual scrollbar */
+  /* Thin scrollbar, greyscale. */
   * {
     scrollbar-width: thin;
-    scrollbar-color: var(--color-blood) var(--color-void);
+    scrollbar-color: var(--color-blood) var(--void);
   }
 }
 
 /* ---------------------------------------------------------------------------
-   Motion — CSS-only stand-ins for the (deferred) Flow/Veo clips
+   Motion keyframes (the few that survive — all colourless)
 --------------------------------------------------------------------------- */
-@keyframes ember-rise {
-  0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
-  12%  { opacity: var(--ember-opacity, 0.7); }
-  88%  { opacity: calc(var(--ember-opacity, 0.7) * 0.5); }
-  100% { transform: translateY(-110vh) translateX(var(--drift, 24px)) scale(0.35); opacity: 0; }
-}
-
 @keyframes scroll-cue {
   0%, 100% { transform: scaleY(0.4); opacity: 0.3; transform-origin: top; }
   50%      { transform: scaleY(1); opacity: 1; transform-origin: top; }
+}
+
+/* Drifting motes — pure motion, no colour. Used by the diaspora "crossing":
+   ash spirit-lights rising and drifting across the dark water. */
+@keyframes ember-rise {
+  0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+  12%  { opacity: var(--ember-opacity, 0.6); }
+  88%  { opacity: calc(var(--ember-opacity, 0.6) * 0.5); }
+  100% { transform: translateY(-110vh) translateX(var(--drift, 24px)) scale(0.35); opacity: 0; }
 }
 
 /* Accessibility — honour the user's reduced-motion preference everywhere. */
@@ -105,58 +121,29 @@
   background-image: linear-gradient(
     to right,
     transparent,
-    color-mix(in srgb, var(--color-sacred) 22%, transparent),
+    var(--faint),
     transparent
   );
 }
 
+/* Hidden-scrollbar utility — the glass slidebar scrolls without a visible track. */
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
 /* ===========================================================================
-   Atmosphere & "life" — cinematic craft layer (art direction: alive + godly,
-   echoing the 2026 film Karuppu — black + fire, "before the fire awakens")
+   The three instruments — text, motion, blur — and a whisper of grain.
+   No colour. Anything that "lights" does so in brightness, never hue.
    =========================================================================== */
 
-/* Title that ignites out of darkness */
+/* The wordmark/title igniting out of darkness — brightness + blur ONLY. */
 @keyframes ignite {
   0%   { opacity: 0; filter: brightness(0.15) blur(10px); transform: translateY(10px); letter-spacing: 0.32em; }
-  55%  { opacity: 1; filter: brightness(1.35) blur(0); }
+  55%  { opacity: 1; filter: brightness(1.5) blur(0); }
   100% { opacity: 1; filter: brightness(1) blur(0); transform: translateY(0); }
 }
 .ignite { animation: ignite 1.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
 
-/* Slow flame gradient drifting across text (fire, no gold per the design system) */
-@keyframes ember-pan { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-.fire-text {
-  background-image: linear-gradient(
-    96deg,
-    var(--color-fire) 0%,
-    var(--color-ember) 38%,
-    #ffd9a8 52%,
-    var(--color-ember) 66%,
-    var(--color-fire) 100%
-  );
-  background-size: 220% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: ember-pan 9s ease-in-out infinite;
-}
-
-/* Breathing aura behind the deity — a slow living glow */
-@keyframes breathe {
-  0%, 100% { transform: scale(1); opacity: 0.35; }
-  50%      { transform: scale(1.09); opacity: 0.62; }
-}
-.aura { animation: breathe 7s ease-in-out infinite; }
-
-/* Heat shimmer for the sacred flame */
-@keyframes flame-flicker {
-  0%, 100% { opacity: 0.85; transform: scaleY(1); }
-  25%      { opacity: 1; transform: scaleY(1.06) skewX(-1.5deg); }
-  50%      { opacity: 0.78; transform: scaleY(0.97) skewX(1deg); }
-  75%      { opacity: 0.95; transform: scaleY(1.03) skewX(-0.8deg); }
-}
-
-/* Film grain drift */
+/* Film grain drift — keeps the black from looking dead. Reads as cinema. */
 @keyframes grain-shift {
   0%   { transform: translate(0, 0); }
   20%  { transform: translate(-3%, -4%); }
@@ -167,11 +154,19 @@
 }
 .grain { animation: grain-shift 8s steps(6) infinite; }
 
-/* Slow ceremonial rotation (kolam / mandala motifs) */
+/* Heat shimmer for a lamp / shrine flame — motion only, no colour. */
+@keyframes flame-flicker {
+  0%, 100% { opacity: 0.85; transform: scaleY(1); }
+  25%      { opacity: 1; transform: scaleY(1.06) skewX(-1.5deg); }
+  50%      { opacity: 0.78; transform: scaleY(0.97) skewX(1deg); }
+  75%      { opacity: 0.95; transform: scaleY(1.03) skewX(-0.8deg); }
+}
+
+/* Slow ceremonial rotation (kolam / mandala line motifs). */
 @keyframes slow-spin { to { transform: rotate(360deg); } }
 .slow-spin { animation: slow-spin 80s linear infinite; }
 
-/* Ken Burns drift for the blurred, video-ready backdrops */
+/* Ken Burns drift for the blurred, video-ready backdrops. */
 @keyframes kenburns {
   from { transform: scale(1.6); }
   to   { transform: scale(1.92) translate3d(-2%, -1.5%, 0); }
@@ -179,9 +174,8 @@
 .kenburns { transform: scale(1.72); animation: kenburns 26s ease-in-out infinite alternate; }
 
 @media (prefers-reduced-motion: reduce) {
-  .ignite, .fire-text, .aura, .grain, .slow-spin, .kenburns { animation: none !important; }
+  .ignite, .grain, .slow-spin, .kenburns, .flame { animation: none !important; }
   .ignite { opacity: 1; filter: none; transform: none; letter-spacing: normal; }
-  .fire-text { color: var(--color-ember); }
   .kenburns { transform: scale(1.72); }
 }
 

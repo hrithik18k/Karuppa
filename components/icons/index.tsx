@@ -57,7 +57,7 @@ export const Lamp = ({
     {lit && (
       <path
         d="M18.7 8.6c1.5 1.6 1.5 4 0 5.4-1.5-1.4-1.5-3.8 0-5.4Z"
-        fill="var(--glow)"
+        fill="var(--ash)"
         stroke="none"
         className="flame"
         style={{ animation: "flame-flicker 1.4s ease-in-out infinite", transformOrigin: "18.7px 14px" }}
@@ -149,7 +149,7 @@ export const KeyArtCrest = (props: SVGProps<SVGSVGElement>) => {
       <circle cx="50" cy="50" r="8.5" strokeWidth="1.1" />
       <path
         d="M50 43.5c3 3.2 3 6.8 0 9-3-2.2-3-5.8 0-9Z"
-        fill="var(--glow)"
+        fill="var(--ash)"
         stroke="none"
         opacity="0.85"
       />

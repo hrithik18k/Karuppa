@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react";
 import type { KaruppuForm } from "@/content/forms";
 import { MotionSlot } from "@/components/media/MotionSlot";
 import { cn } from "@/lib/cn";
@@ -6,11 +5,12 @@ import { cn } from "@/lib/cn";
 type ActiveKey = KaruppuForm["id"] | "hero";
 
 /**
- * The fixed background behind the whole landing — a zoomed, heavily blurred
- * fire-haze of each god's still (never a legible portrait), crossfading and
- * recolouring as the active door changes. Each layer is a MotionSlot, so the
- * day a god gets a `video` it plays here too, still blurred. The clear image
- * only ever appears inside the sanctum.
+ * The fixed background behind the whole landing — a zoomed, heavily blurred,
+ * desaturated still of each god (never a legible portrait), crossfading as the
+ * active door changes. Each layer is a MotionSlot, so the day a god gets a
+ * `video` it plays here too — still blurred. The clear, clear image only ever
+ * appears inside the sanctum (plan.md §1: blur → motion). No colour: presence is
+ * carried by blur and depth alone.
  */
 export function LandingBackdrop({
   forms,
@@ -35,47 +35,28 @@ export function LandingBackdrop({
           )}
         >
           <MotionSlot
-            src={form.image}
+            src={form.veil}
             video={form.video}
-            blur
+            blur="threshold"
             kenBurns
             priority={i === 0}
             quality={30}
             className="absolute inset-0 h-full w-full"
-            mediaClassName="brightness-[0.38] saturate-[0.62] contrast-[1.06]"
-          >
-            <div
-              className="absolute inset-0"
-              style={
-                {
-                  background:
-                    "radial-gradient(62% 52% at 50% 40%, color-mix(in srgb, var(--lglow) 16%, transparent), transparent 66%)",
-                  "--lglow": form.glow,
-                } as CSSProperties
-              }
-            />
-          </MotionSlot>
+            mediaClassName="brightness-[0.34] grayscale contrast-[1.05]"
+          />
         </div>
       ))}
 
       {/* Veil — the god is swallowed by the dark; only a faint, desaturated ghost
-          and a low ember core survive. Heavy enough that the page reads near-black
-          (a *glimpse*, not a portrait), light enough that the fire still breathes. */}
+          survives. Heavy enough that the page reads near-black (a *glimpse*, not a
+          portrait), with no hue of any kind. */}
       <div className="absolute inset-0 bg-void/55" />
       <div className="absolute inset-0 bg-gradient-to-b from-void/75 via-void/35 to-void/95" />
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(70% 60% at 50% 50%, rgba(10,10,11,0.62), rgba(10,10,11,0.18) 55%, transparent 78%)",
-        }}
-      />
-      {/* A single faint ember core so the void still has a heartbeat. */}
-      <div
-        className="aura absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(36% 30% at 50% 46%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%)",
+            "radial-gradient(70% 60% at 50% 50%, rgba(5,5,5,0.62), rgba(5,5,5,0.18) 55%, transparent 78%)",
         }}
       />
     </div>

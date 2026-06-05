@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { navItems } from "@/lib/nav";
 import type { SectionContent } from "@/content/sections";
-import { EmberField } from "@/components/motion/EmberField";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { BeliefTag } from "@/components/ui/BeliefTag";
@@ -22,7 +21,6 @@ export function SectionPage({ data }: { data: SectionContent }) {
     <>
       {/* Hero */}
       <section className="relative flex min-h-[66vh] items-center overflow-hidden">
-        <EmberField className="absolute inset-0 opacity-70" />
         <FlameMandala
           aria-hidden
           className="slow-spin pointer-events-none absolute -right-16 top-1/2 h-[62vh] max-h-[560px] w-[62vh] max-w-[560px] -translate-y-1/2 text-accent opacity-[0.06]"

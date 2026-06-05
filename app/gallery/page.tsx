@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { forms } from "@/content/forms";
 import { sections } from "@/content/sections";
-import { EmberField } from "@/components/motion/EmberField";
+import { VeiledBackdrop } from "@/components/atmosphere/VeiledBackdrop";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -25,15 +25,15 @@ export const metadata: Metadata = {
  * clearly here: each form is a heavily blurred, darkened still that links to his
  * own page, where the portrait is revealed. The motion (scroll-scrubbed clips of
  * each divine act) will live here later; every tile already reserves its slot.
- * Site-default fire-red accent, so the multi-coloured tiles below read as one
- * deity across a spectrum of light.
+ * No colour: the tiles read as one deity, told only in blur, ash text, and motion.
  */
 export default function GalleryPage() {
   return (
     <>
+      {/* The guardian, glimpsed through the dark — a blurred greyscale backdrop. */}
+      <VeiledBackdrop veil="/img/veil/periya.webp" intensity="deep" />
       {/* Hero */}
       <section className="relative flex min-h-[60vh] items-center overflow-hidden">
-        <EmberField className="absolute inset-0 opacity-70" />
         <FlameMandala
           aria-hidden
           className="slow-spin pointer-events-none absolute -right-16 top-1/2 h-[62vh] max-h-[560px] w-[62vh] max-w-[560px] -translate-y-1/2 text-accent opacity-[0.06]"

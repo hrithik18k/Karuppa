@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import type { CSSProperties, SVGProps } from "react";
-import Image from "next/image";
+import type { SVGProps } from "react";
 import Link from "next/link";
 import { sections } from "@/content/sections";
+import { VeiledBackdrop } from "@/components/atmosphere/VeiledBackdrop";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
-import { EmberField } from "@/components/motion/EmberField";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PillButton } from "@/components/ui/PillButton";
@@ -52,29 +51,14 @@ const attributes: Attribute[] = data.points.map((p, i) => ({
 }));
 
 export default function IconographyPage() {
-  // Forged identity — bronze-iron struck with fire. Dark, not a wash.
-  const accent = {
-    "--accent": "#c97a3d",
-    "--glow": "#ff6b1a",
-  } as CSSProperties;
-
   return (
-    <div style={accent}>
-      {/* Hero — the guardian held in shadow; the crest burns beside the title */}
+    <div>
+      {/* The guardian, glimpsed through the dark — a blurred greyscale backdrop. */}
+      <VeiledBackdrop veil="/img/veil/sangili.webp" priority intensity="deep" />
+      {/* Hero — the guardian held in shadow; the crest stands beside the title */}
       <section className="relative flex min-h-[90vh] items-center overflow-hidden">
-        <Image
-          src="/img/forms/sangili-karuppu.jpeg"
-          alt=""
-          aria-hidden
-          fill
-          priority
-          quality={50}
-          sizes="100vw"
-          className="kenburns object-cover object-[50%_28%] brightness-[0.3]"
-        />
         <div className="absolute inset-0 bg-gradient-to-r from-void via-void/85 to-void/45" />
         <div className="absolute inset-0 bg-gradient-to-t from-void via-void/35 to-void/75" />
-        <EmberField className="absolute inset-0 opacity-60" />
 
         <IconCrest className="pointer-events-none absolute -right-8 top-1/2 hidden h-[72vh] max-h-[640px] w-[72vh] max-w-[640px] -translate-y-1/2 lg:block" />
 

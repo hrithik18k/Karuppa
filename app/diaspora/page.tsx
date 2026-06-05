@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import type { CSSProperties } from "react";
 import Link from "next/link";
 import { sections } from "@/content/sections";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
@@ -20,17 +19,11 @@ export const metadata: Metadata = { title: data.title, description: data.lead };
  * Diaspora — "Karuppu Across the Seas." A bespoke, dark oceanic chapter themed on
  * the kala pani (the dark waters): Tamil migrants carrying the guardian to far
  * shores, where he took new names. Structured as a voyage — departure, the
- * crossing, then the landfalls as a sea-route. Wears the ocean-crossed form's own
- * Diaspora Indigo-Violet identity (Sangani Baba: --accent #6a3da8 / --glow
- * #a06cd5). All facts flow from sections.diaspora; the Indo-Caribbean VERIFY is
- * preserved (matching the Sangani Baba record in content/forms.ts).
+ * crossing, then the landfalls as a sea-route. Monochrome (plan.md §2): no hue,
+ * the dark waters told only in ash text, blur, and depth. All facts flow from
+ * sections.diaspora; the Indo-Caribbean VERIFY is preserved (matching the Sangani
+ * Baba record in content/forms.ts).
  */
-
-// The page's oceanic identity — the ocean-crossed form's indigo-violet.
-const oceanic = {
-  "--accent": "#6a3da8",
-  "--glow": "#a06cd5",
-} as CSSProperties;
 
 // The landfalls — the sea-route across the dark waters, far shore by far shore.
 const landfalls: Landfall[] = [
@@ -68,7 +61,7 @@ const landfalls: Landfall[] = [
 
 export default function DiasporaPage() {
   return (
-    <div style={oceanic}>
+    <div>
       {/* Hero — the dark waters */}
       <section className="relative flex min-h-[74vh] items-center overflow-hidden">
         <KalaPaniField className="absolute inset-0" />

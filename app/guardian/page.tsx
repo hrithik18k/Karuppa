@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { VeiledBackdrop } from "@/components/atmosphere/VeiledBackdrop";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -63,19 +64,21 @@ const timeline = [
 export default function GuardianPage() {
   return (
     <>
-      {/* Hero — split layout */}
+      {/* The guardian, glimpsed through the dark — a faint blurred backdrop. */}
+      <VeiledBackdrop veil="/img/veil/periya.webp" intensity="deep" />
+      {/* Hero — split layout: text-led, with one blurred still (plan.md §4). */}
       <section className="mx-auto grid max-w-7xl items-center gap-12 px-6 pb-20 pt-32 md:grid-cols-2 md:gap-16 md:pt-40">
         <ScrollReveal>
           <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-2xl border border-sacred/10">
             <Image
-              src="/img/forms/periya-karuppu.jpeg"
-              alt="Karuppu Swamy, the guardian deity, emerging from darkness"
+              src="/img/forms/periya.webp"
+              alt="Karuppu Swamy, the guardian deity, glimpsed through the dark"
               fill
               priority
               sizes="(max-width: 768px) 90vw, 40vw"
-              className="object-cover"
+              className="scale-110 object-cover blur-[12px] grayscale brightness-[0.72]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-void/70 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-void/80 via-void/20 to-transparent" />
           </div>
         </ScrollReveal>
 

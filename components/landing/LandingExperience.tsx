@@ -2,30 +2,16 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import type { CSSProperties } from "react";
 import type { FormId, KaruppuForm } from "@/content/forms";
 import { LandingBackdrop } from "./LandingBackdrop";
 import { Seal } from "./Seal";
-import { EmberField } from "@/components/motion/EmberField";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { PillButton } from "@/components/ui/PillButton";
 import { ScrollCue } from "@/components/ui/ScrollCue";
 import { FlameMandala, KolamStar } from "@/components/icons";
-import { cn } from "@/lib/cn";
 
 type ActiveKey = FormId | "hero";
-
-/** Smoothly scroll to an id, using Lenis when present. */
-function scrollToId(id: string) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  if (typeof window !== "undefined" && window.__lenis) {
-    window.__lenis.scrollTo(el, { offset: 0 });
-  } else {
-    el.scrollIntoView({ behavior: "smooth" });
-  }
-}
 
 /** Reports itself active to the parent when it occupies the viewport centre. */
 function useActiveOnView(key: ActiveKey, onActive: (k: ActiveKey) => void) {
@@ -97,64 +83,17 @@ export function LandingExperience({ forms }: { forms: KaruppuForm[] }) {
   }, []);
 
   return (
-    <div data-form={active === "hero" ? undefined : active} className="relative">
+    <div className="relative">
       <LandingBackdrop forms={forms} active={active} />
-      <EmberField className="pointer-events-none fixed inset-0 -z-10" />
 
-      {/* Scroll progress */}
-      <div className="fixed inset-x-0 top-0 z-30 h-px bg-sacred/10">
+      {/* Scroll progress — a single ash hairline (plan.md §2). */}
+      <div className="fixed inset-x-0 top-0 z-30 h-px bg-sacred/[0.07]">
         <div
           ref={progressRef}
-          className="h-full origin-left bg-accent"
+          className="h-full origin-left bg-sacred/40"
           style={{ transform: "scaleX(0)" }}
         />
       </div>
-
-      {/* Side index */}
-      <nav
-        aria-label="The fires"
-        className={cn(
-          "fixed right-6 top-1/2 z-30 hidden -translate-y-1/2 transition-opacity duration-500 lg:block",
-          active === "hero" ? "pointer-events-none opacity-0" : "opacity-100"
-        )}
-      >
-        <ul className="flex flex-col gap-3.5">
-          {forms.map((f) => {
-            const on = f.id === active;
-            return (
-              <li key={f.id}>
-                <button
-                  type="button"
-                  onClick={() => scrollToId(`door-${f.id}`)}
-                  aria-label={`Go to ${f.name}`}
-                  aria-current={on ? "true" : undefined}
-                  className="group flex items-center justify-end gap-3"
-                  style={{ "--accent": f.accent, "--glow": f.glow } as CSSProperties}
-                >
-                  <span
-                    className={cn(
-                      "font-mono text-[10px] uppercase tracking-[0.2em] transition-opacity",
-                      on
-                        ? "text-accent opacity-100"
-                        : "text-sacred/45 opacity-0 group-hover:opacity-100"
-                    )}
-                  >
-                    {f.name}
-                  </span>
-                  <span
-                    className={cn(
-                      "h-2 w-2 rounded-full border transition-all duration-300",
-                      on
-                        ? "scale-125 border-accent bg-accent"
-                        : "border-sacred/40 group-hover:border-accent"
-                    )}
-                  />
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
 
       {/* Hero — no god revealed, only the fire and the name */}
       <section
@@ -163,23 +102,24 @@ export function LandingExperience({ forms }: { forms: KaruppuForm[] }) {
       >
         <div className="max-w-3xl">
           <div className="flex items-center justify-center gap-3">
-            <FlameMandala aria-hidden className="h-6 w-6 text-accent/80" />
+            <FlameMandala aria-hidden className="h-6 w-6 text-sacred/70" />
             <Eyebrow num="00">Guardian Deity</Eyebrow>
           </div>
           <p
-            className="ignite mt-6 font-mono text-xs uppercase tracking-[0.42em] text-accent"
+            className="ignite mt-6 font-mono text-xs uppercase tracking-[0.42em] text-sacred/55"
             style={{ animationDelay: "0.1s" }}
           >
-            The fire awakens
+            Out of the dark
           </p>
           <h1 className="mt-4">
+            {/* The wordmark ignites in brightness + blur only — no colour. */}
             <span className="ignite block">
-              <span className="fire-text block font-tamil text-6xl font-extrabold leading-none drop-shadow-[0_2px_28px_rgba(0,0,0,0.9)] sm:text-8xl">
+              <span className="block font-tamil text-6xl font-extrabold leading-none text-sacred drop-shadow-[0_2px_28px_rgba(0,0,0,0.9)] sm:text-8xl">
                 கருப்பு சாமி
               </span>
             </span>
             <span
-              className="ignite mt-4 block font-display text-2xl font-medium tracking-[0.34em] text-accent sm:text-3xl"
+              className="ignite mt-4 block font-display text-2xl font-medium tracking-[0.34em] text-sacred/90 sm:text-3xl"
               style={{ animationDelay: "0.28s" }}
             >
               KARUPPA
