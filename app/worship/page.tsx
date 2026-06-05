@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { sections } from "@/content/sections";
+import { VeiledBackdrop } from "@/components/atmosphere/VeiledBackdrop";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -41,6 +42,8 @@ const keepers = [
 export default function WorshipPage() {
   return (
     <div>
+      {/* The guardian, glimpsed through the dark — a blurred greyscale backdrop. */}
+      <VeiledBackdrop veil="/img/veil/mangadu.webp" priority intensity="deep" />
       {/* Hero — oral, firelit, lamp at the threshold of the chapter */}
       <section className="relative flex min-h-[72vh] items-center overflow-hidden">
         <Lamp

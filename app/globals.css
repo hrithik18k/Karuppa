@@ -126,6 +126,10 @@
   );
 }
 
+/* Hidden-scrollbar utility — the glass slidebar scrolls without a visible track. */
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
 /* ===========================================================================
    The three instruments — text, motion, blur — and a whisper of grain.
    No colour. Anything that "lights" does so in brightness, never hue.

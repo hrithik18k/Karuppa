@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { sections } from "@/content/sections";
+import { VeiledBackdrop } from "@/components/atmosphere/VeiledBackdrop";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -42,6 +43,8 @@ const sources = [
 export default function AboutPage() {
   return (
     <>
+      {/* A faint glimpse, sunk deep — about stays the calmest chapter. */}
+      <VeiledBackdrop veil="/img/veil/periya.webp" intensity="deep" />
       {/* Hero — quiet on purpose */}
       <section className="border-b border-sacred/10">
         <div className="mx-auto max-w-4xl px-6 pb-16 pt-32 md:pb-20 md:pt-40">

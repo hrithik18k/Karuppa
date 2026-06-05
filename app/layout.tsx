@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { fontVariables } from "@/lib/fonts";
-import { SiteHeader } from "@/components/nav/SiteHeader";
+import { GlassNav } from "@/components/nav/GlassNav";
 import { SiteFooter } from "@/components/nav/SiteFooter";
 import { GrainVignette } from "@/components/atmosphere/GrainVignette";
 import { AmbientSound } from "@/components/atmosphere/AmbientSound";
@@ -55,7 +55,7 @@ export default function RootLayout({
         </a>
         <SmoothScroll />
         <SanctumVeil />
-        <SiteHeader />
+        <GlassNav />
         <main id="main">{children}</main>
         <SiteFooter />
         <GrainVignette />

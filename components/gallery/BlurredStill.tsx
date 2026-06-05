@@ -22,7 +22,7 @@ export function BlurredStill({ form }: { form: KaruppuForm }) {
         {/* The still — blurred (threshold → veil on hover) and crushed toward
             black so the face never reads. Blur is the narrative gradient. */}
         <Image
-          src={form.image}
+          src={form.veil}
           alt=""
           aria-hidden
           fill

@@ -14,13 +14,13 @@ export function CrossingPanel() {
     <div className="relative overflow-hidden rounded-[2rem] border border-accent/20 bg-stone/50">
       {/* The dark waters — the diaspora form's still, kept deep in shadow */}
       <Image
-        src="/img/forms/sangani-baba.jpeg"
+        src="/img/forms/sangani.webp"
         alt=""
         aria-hidden
         fill
         sizes="(max-width: 768px) 92vw, 70vw"
         quality={50}
-        className="object-cover object-top brightness-[0.4]"
+        className="object-cover object-top brightness-[0.4] grayscale"
       />
       {/* Hard veil — pull the photo down into the void on every edge */}
       <div className="absolute inset-0 bg-gradient-to-t from-void via-void/80 to-void/70" />

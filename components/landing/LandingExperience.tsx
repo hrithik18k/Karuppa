@@ -10,20 +10,8 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { PillButton } from "@/components/ui/PillButton";
 import { ScrollCue } from "@/components/ui/ScrollCue";
 import { FlameMandala, KolamStar } from "@/components/icons";
-import { cn } from "@/lib/cn";
 
 type ActiveKey = FormId | "hero";
-
-/** Smoothly scroll to an id, using Lenis when present. */
-function scrollToId(id: string) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  if (typeof window !== "undefined" && window.__lenis) {
-    window.__lenis.scrollTo(el, { offset: 0 });
-  } else {
-    el.scrollIntoView({ behavior: "smooth" });
-  }
-}
 
 /** Reports itself active to the parent when it occupies the viewport centre. */
 function useActiveOnView(key: ActiveKey, onActive: (k: ActiveKey) => void) {
@@ -106,51 +94,6 @@ export function LandingExperience({ forms }: { forms: KaruppuForm[] }) {
           style={{ transform: "scaleX(0)" }}
         />
       </div>
-
-      {/* Side index */}
-      <nav
-        aria-label="The fires"
-        className={cn(
-          "fixed right-6 top-1/2 z-30 hidden -translate-y-1/2 transition-opacity duration-500 lg:block",
-          active === "hero" ? "pointer-events-none opacity-0" : "opacity-100"
-        )}
-      >
-        <ul className="flex flex-col gap-3.5">
-          {forms.map((f) => {
-            const on = f.id === active;
-            return (
-              <li key={f.id}>
-                <button
-                  type="button"
-                  onClick={() => scrollToId(`door-${f.id}`)}
-                  aria-label={`Go to ${f.name}`}
-                  aria-current={on ? "true" : undefined}
-                  className="group flex items-center justify-end gap-3"
-                >
-                  <span
-                    className={cn(
-                      "font-mono text-[10px] uppercase tracking-[0.2em] transition-opacity",
-                      on
-                        ? "text-sacred opacity-100"
-                        : "text-sacred/45 opacity-0 group-hover:opacity-100"
-                    )}
-                  >
-                    {f.name}
-                  </span>
-                  <span
-                    className={cn(
-                      "h-2 w-2 rounded-full border transition-all duration-300",
-                      on
-                        ? "scale-125 border-sacred bg-sacred"
-                        : "border-sacred/40 group-hover:border-sacred"
-                    )}
-                  />
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
 
       {/* Hero — no god revealed, only the fire and the name */}
       <section

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { forms } from "@/content/forms";
 import { sections } from "@/content/sections";
+import { VeiledBackdrop } from "@/components/atmosphere/VeiledBackdrop";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -29,6 +30,8 @@ export const metadata: Metadata = {
 export default function GalleryPage() {
   return (
     <>
+      {/* The guardian, glimpsed through the dark — a blurred greyscale backdrop. */}
+      <VeiledBackdrop veil="/img/veil/periya.webp" intensity="deep" />
       {/* Hero */}
       <section className="relative flex min-h-[60vh] items-center overflow-hidden">
         <FlameMandala

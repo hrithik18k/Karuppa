@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { forms, formById } from "@/content/forms";
 import { MotionSlot } from "@/components/media/MotionSlot";
+import { VeiledBackdrop } from "@/components/atmosphere/VeiledBackdrop";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { BeliefTag } from "@/components/ui/BeliefTag";
 import { RitualDivider } from "@/components/ui/RitualDivider";
@@ -46,13 +47,17 @@ export default async function SanctumPage({
 
   return (
     <div data-form={f.id}>
-      {/* Hero — the reveal. MotionSlot plays his video once the registry has one. */}
+      {/* The same god, glimpsed in the dark behind the whole sanctum. */}
+      <VeiledBackdrop veil={f.veil} intensity="deep" />
+      {/* Hero — the reveal: his blurred presence resolves to a clear (B&W) still.
+          The MotionSlot plays his video here the day the registry has one. */}
       <section className="relative flex min-h-dvh items-center overflow-hidden">
         <MotionSlot
           src={f.image}
           video={f.video}
           alt={`${f.name} — ${f.epithet}`}
           priority
+          mediaClassName="grayscale"
           className="absolute inset-0"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-void via-void/80 to-void/25" />

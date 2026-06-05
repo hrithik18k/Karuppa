@@ -35,7 +35,7 @@ export function LandingBackdrop({
           )}
         >
           <MotionSlot
-            src={form.image}
+            src={form.veil}
             video={form.video}
             blur="threshold"
             kenBurns

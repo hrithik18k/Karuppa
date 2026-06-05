@@ -152,3 +152,15 @@ Phases 1–5 need **zero new assets** — pure refinement of what exists, so the
 **Status (this session):** Phases 1–5 complete; the whole site is monochrome ash-on-`#050505`. `npm run build` + `tsc --noEmit` both green; verified in-browser (landing, god-door sigil, `/forms/[id]` reveal, gallery blur scale, worship). The palette is collapsed to four greyscale tokens (`--void/--ash/--dim/--faint`); the legacy `--color-*` and `--accent/--glow` names survive only as ash aliases so existing utility classes compile without hue. Per-form `accent/glow/theme` are gone from `content/forms.ts` and every page; `CursorEmber`/`EmberField` deleted; `KalaPaniField` spirit-lights kept as ash motion.
 
 **Next steps:** (0) commission/trace the SVG wordmark for the masthead + hero; (6) generate the six monochrome `act` clips and drop paths into the `video?` fields; (7) Lighthouse pass, OG images, Vercel deploy.
+
+---
+
+## Session update — 2026-06-05 (assets, microservices, glass nav)
+
+- **Per-god microservices.** Each form is now a self-contained module under `services/karuppu/<id>/manifest.ts`, composed by `registry.ts`; `content/forms.ts` is a thin back-compat re-export. See `services/karuppu/README.md`.
+- **Black-and-white asset pipeline.** `generate/optimize-images.mjs` (sharp) bakes greyscale web derivatives from the colour originals in `assets/img-V1` → `public/img/forms/<id>.webp` (clear reveal, ~75–125 KB) + `public/img/veil/<id>.webp` (tiny blurred backdrop, ~17–30 KB). The heavy 2.5–3.3 MB jpegs were dropped from `/public` (≈17 MB → ≈0.75 MB). Colour originals stay in `/assets` for the future glow pass.
+- **Site-wide "glimpse."** New `components/atmosphere/VeiledBackdrop.tsx` — a fixed, zoomed, blurred, greyscale, near-black Ken-Burns photo glimpse — sits behind every photographic chapter (powers, iconography, worship, festivals, guardian, gallery, about) and each sanctum; the landing + gallery tiles now read the tiny `veil` sources. `temples` / `diaspora` keep their bespoke `AtlasField` / `KalaPaniField`.
+- **Navigation.** The full-screen toggle menu (`SiteHeader` / `RitualMenu`) and the right-side fires index are removed; replaced by a floating glassmorphic top-centre slidebar (`components/nav/GlassNav.tsx`) — frosted ash over the void, horizontally scrollable, strictly monochrome.
+- **Glow deferred.** Everything stays B&W; a future plan will say *where* to glow (brightness/bloom only, never hue). `VeiledBackdrop` and `GlassNav` leave the seam.
+
+`tsc --noEmit` + `next build` green; all 20 routes prerender.
