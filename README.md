@@ -3,7 +3,7 @@
 > A cinematic digital shrine for **Karuppu Swamy** — the guardian deity (*Kaval Deivam*) of Dravidian folk religion — revealed form by form, power by power, through scroll-triggered motion graphics.
 > 
 
-The build is now **underway**. The Next.js application foundation is in place — the "Dark Sanctum" design system, the type system, a full-screen ritual navigation, and a cinematic scroll-driven home page — built from the reference stills. **Motion graphics (the Flow/Veo clips) are deliberately deferred**; the site currently uses the still imagery with CSS-based motion (drifting embers, reveal-on-scroll) as a stand-in. The repository also holds the design specification, the motion-graphics production plan, and the reference imagery.
+The build is now **underway**. The Next.js application foundation is in place — the "Dark sanctum" design system, the type system, a full-screen ritual navigation, and a cinematic scroll-driven home page — built from the reference stills. **Motion graphics (the Flow/Veo clips) are deliberately deferred**; the site currently uses the still imagery with CSS-based motion (drifting embers, reveal-on-scroll) as a stand-in. The repository also holds the design specification, the motion-graphics production plan, and the reference imagery.
 
 ---
 
