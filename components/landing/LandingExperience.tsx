@@ -1,15 +1,14 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import type { FormId, KaruppuForm } from "@/content/forms";
 import { LandingBackdrop } from "./LandingBackdrop";
 import { Seal } from "./Seal";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { PillButton } from "@/components/ui/PillButton";
-import { ScrollCue } from "@/components/ui/ScrollCue";
 import { FlameMandala, KolamStar } from "@/components/icons";
+import { KaruppuWordmark } from "@/components/brand/KaruppuWordmark";
 
 type ActiveKey = FormId | "hero";
 
@@ -98,47 +97,77 @@ export function LandingExperience({ forms }: { forms: KaruppuForm[] }) {
       {/* Hero — no god revealed, only the fire and the name */}
       <section
         ref={heroRef}
-        className="relative flex min-h-dvh items-center justify-center px-6 text-center"
+        className="relative flex min-h-[92dvh] items-center justify-center overflow-hidden px-4 pb-14 pt-28 text-center sm:px-6"
       >
-        <div className="max-w-3xl">
+        <div
+          aria-hidden
+          className="absolute inset-x-0 top-[18%] h-px bg-gradient-to-r from-transparent via-accent/45 to-transparent"
+        />
+        <div
+          aria-hidden
+          className="absolute left-1/2 top-1/2 h-[42rem] w-px -translate-x-1/2 -translate-y-1/2 rotate-[31deg] bg-gradient-to-b from-transparent via-accent/20 to-transparent"
+        />
+        <div className="relative z-10 mx-auto w-full max-w-6xl">
           <div className="flex items-center justify-center gap-3">
-            <FlameMandala aria-hidden className="h-6 w-6 text-sacred/70" />
-            <Eyebrow num="00">Guardian Deity</Eyebrow>
+            <FlameMandala aria-hidden className="h-6 w-6 text-accent/85" />
+            <Eyebrow num="00">Kaval Deivam</Eyebrow>
           </div>
           <p
-            className="ignite mt-6 font-mono text-xs uppercase tracking-[0.42em] text-sacred/55"
+            className="ignite mt-6 font-mono text-xs uppercase tracking-[0.34em] text-sacred/55"
             style={{ animationDelay: "0.1s" }}
           >
-            Out of the dark
+            Karuppu Swamy
           </p>
-          <h1 className="mt-4">
+          {/* The stack is capped by viewport HEIGHT too (dvh) so the whole
+              composition — marks, vow, doors — holds inside one fold on short
+              laptop screens as well as tall phones. */}
+          <h1 className="mt-2 flex flex-col items-center" aria-label="Karuppu">
+            <span className="wordmark-rise block w-full">
+              <KaruppuWordmark
+                variant="tamil"
+                priority
+                className="mx-auto w-[min(76vw,43rem,38dvh)] drop-shadow-[0_0_30px_rgba(255,24,20,0.22)]"
+              />
+            </span>
+            <span
+              className="wordmark-rise -mt-[min(4rem,9dvh)] block w-full sm:-mt-[min(6rem,10dvh)] md:-mt-[min(8rem,12dvh)]"
+              style={{ animationDelay: "0.18s" }}
+            >
+              <KaruppuWordmark
+                priority
+                className="mx-auto w-[min(92vw,64rem,58dvh)] drop-shadow-[0_0_34px_rgba(255,24,20,0.24)]"
+              />
+            </span>
             {/* The wordmark ignites in brightness + blur only — no colour. */}
-            <span className="ignite block">
+            <span className="sr-only">
               <span className="block font-tamil text-6xl font-extrabold leading-none text-sacred drop-shadow-[0_2px_28px_rgba(0,0,0,0.9)] sm:text-8xl">
                 கருப்பு சாமி
               </span>
             </span>
             <span
-              className="ignite mt-4 block font-display text-2xl font-medium tracking-[0.34em] text-sacred/90 sm:text-3xl"
+              className="sr-only"
               style={{ animationDelay: "0.28s" }}
             >
               KARUPPA
             </span>
           </h1>
-          <p className="mx-auto mt-7 max-w-xl font-serif text-2xl italic leading-snug text-sacred/90 [text-shadow:0_1px_18px_rgba(0,0,0,0.9)] sm:text-3xl">
+          <p className="mx-auto -mt-[min(2rem,4dvh)] max-w-xl font-serif text-2xl italic leading-snug text-sacred/90 [text-shadow:0_1px_18px_rgba(0,0,0,0.9)] sm:-mt-[min(3rem,5dvh)] sm:text-3xl md:-mt-[min(4rem,6dvh)]">
+            Kaval Deivam. Guardian of justice.
+          </p>
+          <p className="sr-only">
             Kaval Deivam — the Guardian of Justice.
           </p>
           <p className="mx-auto mt-5 max-w-md text-base leading-relaxed text-sacred/65 [text-shadow:0_1px_14px_rgba(0,0,0,0.9)]">
-            Scroll down through the forms. Each is a guardian; none shows his
-            face until you enter.
+            A dark devotional shrine for Karuppu Swamy, told form by form with
+            reverence.
           </p>
-          <div className="mt-9 flex justify-center">
-            <PillButton href="#door-sangili" variant="solid">
-              Begin
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <PillButton href="/forms" variant="solid">
+              Enter forms
             </PillButton>
+            <PillButton href="/guardian">Know Karuppu</PillButton>
           </div>
         </div>
-        <ScrollCue className="absolute bottom-8 left-1/2 -translate-x-1/2" />
       </section>
 
       {/* The doors — one self-contained god per fire */}
@@ -159,7 +188,7 @@ export function LandingExperience({ forms }: { forms: KaruppuForm[] }) {
             </span>
           </div>
           <p className="mt-8 font-tamil text-xl text-sacred/60">இன்னும் பல</p>
-          <h2 className="mt-2 font-display text-3xl font-semibold text-sacred md:text-4xl">
+          <h2 className="brush-heading mt-2 font-display text-3xl font-semibold text-accent md:text-4xl">
             More fires await
           </h2>
           <p className="mx-auto mt-5 max-w-md text-base leading-relaxed text-sacred/55">

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { forms } from "@/content/forms";
 import { sections } from "@/content/sections";
-import { VeiledBackdrop } from "@/components/atmosphere/VeiledBackdrop";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -30,10 +30,20 @@ export const metadata: Metadata = {
 export default function GalleryPage() {
   return (
     <>
-      {/* The guardian, glimpsed through the dark — a blurred greyscale backdrop. */}
-      <VeiledBackdrop veil="/img/veil/periya.webp" intensity="deep" />
-      {/* Hero */}
+      {/* Hero — the guardian showcased as a zoomed greyscale still in the
+          background; only the text sits on top. */}
       <section className="relative flex min-h-[60vh] items-center overflow-hidden">
+        <Image
+          src="/img/forms/periya.webp"
+          alt=""
+          aria-hidden
+          fill
+          priority
+          sizes="100vw"
+          className="kenburns object-cover object-[50%_56%] grayscale-[0.72] brightness-[0.68] contrast-[1.06]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-void via-void/85 to-void/50" />
+        <div className="absolute inset-0 bg-gradient-to-t from-void via-void/40 to-void/70" />
         <FlameMandala
           aria-hidden
           className="slow-spin pointer-events-none absolute -right-16 top-1/2 h-[62vh] max-h-[560px] w-[62vh] max-w-[560px] -translate-y-1/2 text-accent opacity-[0.06]"

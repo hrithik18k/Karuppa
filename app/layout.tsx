@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { fontVariables } from "@/lib/fonts";
+import { siteDescription, siteName, siteTitle, siteUrl } from "@/lib/site";
 import { GlassNav } from "@/components/nav/GlassNav";
 import { SiteFooter } from "@/components/nav/SiteFooter";
 import { GrainVignette } from "@/components/atmosphere/GrainVignette";
@@ -9,13 +10,13 @@ import { SanctumVeil } from "@/components/transitions/SanctumVeil";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://karuppa.vercel.app"),
+  metadataBase: new URL(siteUrl),
+  applicationName: siteName,
   title: {
-    default: "Karuppa — Kaval Deivam, the Guardian of Justice",
+    default: siteTitle,
     template: "%s · Karuppa",
   },
-  description:
-    "A cinematic digital shrine for Karuppu Swamy, the guardian deity (kaval deivam) of Dravidian folk religion — revealed form by form, power by power.",
+  description: siteDescription,
   keywords: [
     "Karuppu Swamy",
     "Karuppasamy",
@@ -25,13 +26,27 @@ export const metadata: Metadata = {
     "guardian deity",
   ],
   openGraph: {
-    title: "Karuppa — Kaval Deivam, the Guardian of Justice",
+    siteName,
+    title: siteTitle,
     description:
       "A cinematic digital shrine for the guardian deity Karuppu Swamy — revealed form by form, power by power.",
     type: "website",
     locale: "en_IN",
+    url: "/",
   },
+  twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true },
+};
+
+/** WebSite structured data — the shrine, named for search. */
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteName,
+  alternateName: "Karuppu — Kaval Deivam",
+  url: siteUrl,
+  description: siteDescription,
+  inLanguage: ["en", "ta"],
 };
 
 export const viewport: Viewport = {
@@ -47,6 +62,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={fontVariables} suppressHydrationWarning>
       <body className="min-h-dvh bg-void font-sans text-sacred antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[80] focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:text-void"
