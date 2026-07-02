@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { navItems } from "@/lib/nav";
 import { BeliefTag } from "@/components/ui/BeliefTag";
+import { KaruppuWordmark } from "@/components/brand/KaruppuWordmark";
 
 export function SiteFooter() {
   return (
@@ -8,13 +9,17 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="flex flex-col gap-12 md:flex-row md:justify-between">
           <div className="max-w-sm">
-            <Link href="/" className="flex flex-col leading-none">
+            <Link href="/" className="flex flex-col leading-none [&>span]:sr-only">
+              <KaruppuWordmark className="h-auto w-40 drop-shadow-[0_0_18px_rgba(255,24,20,0.18)]" />
               <span className="font-tamil text-sm text-sacred/70">கருப்பு சாமி</span>
-              <span className="font-display text-xl font-semibold tracking-[0.22em] text-sacred">
+              <span className="sr-only">
                 KARUPPA
               </span>
             </Link>
             <p className="mt-5 font-serif text-base italic leading-relaxed text-sacred/55">
+              A dark devotional shrine for Karuppu Swamy, held with reverence.
+            </p>
+            <p className="sr-only">
               A cinematic digital shrine for the guardian deity Karuppu Swamy —
               revealed form by form, power by power.
             </p>

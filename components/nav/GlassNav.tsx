@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navItems } from "@/lib/nav";
 import { cn } from "@/lib/cn";
+import { KaruppuWordmark } from "@/components/brand/KaruppuWordmark";
 
 /**
  * The primary navigation — a floating glassmorphic slidebar pinned to the
@@ -38,11 +39,9 @@ export function GlassNav() {
         <Link
           href="/"
           aria-label="Karuppa — home"
-          className="group flex shrink-0 items-center rounded-full px-3.5 py-1.5 transition-colors hover:bg-sacred/[0.07]"
+          className="group flex shrink-0 items-center rounded-full px-3 py-1.5 transition-colors hover:bg-sacred/[0.07]"
         >
-          <span className="font-display text-sm font-semibold tracking-[0.26em] text-sacred">
-            KARUPPA
-          </span>
+          <KaruppuWordmark className="h-7 w-24 object-contain drop-shadow-[0_0_14px_rgba(255,24,20,0.2)]" />
         </Link>
 
         <span aria-hidden className="h-5 w-px shrink-0 bg-sacred/15" />
@@ -60,7 +59,7 @@ export function GlassNav() {
                   className={cn(
                     "block rounded-full px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] transition-colors duration-300",
                     active
-                      ? "bg-sacred/12 text-sacred"
+                      ? "bg-accent/14 text-accent"
                       : "text-sacred/55 hover:bg-sacred/[0.06] hover:text-sacred"
                   )}
                 >

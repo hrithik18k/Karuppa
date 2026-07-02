@@ -22,8 +22,8 @@ export function SectionHeading({
   return (
     <Tag
       className={cn(
-        "font-display font-semibold leading-[1.04] tracking-tight",
-        accent ? "text-accent" : "text-sacred",
+        "font-display font-semibold leading-[1.04] tracking-normal",
+        accent ? "brush-heading text-accent" : "text-sacred",
         className
       )}
     >
