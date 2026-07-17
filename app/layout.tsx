@@ -55,7 +55,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={fontVariables} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={fontVariables}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
       <body className="min-h-dvh bg-void font-sans text-sacred antialiased">
         <script
           type="application/ld+json"

@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { navItems } from "@/lib/nav";
-import { forms } from "@/content/forms";
+import { forms } from "@/services/karuppu";
 import { siteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
