@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { forms, formById } from "@/content/forms";
+import { forms, formById } from "@/services/karuppu";
 import { MotionSlot } from "@/components/media/MotionSlot";
 import { SanctumRoom } from "@/components/forms/SanctumRoom";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -138,13 +138,10 @@ export default async function SanctumPage({
         <div className="mt-12 rounded-2xl border border-sacred/10 bg-stone/40 p-7">
           <p className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-accent">
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent" />
-            The reveal · coming in motion
+            The remembered act
           </p>
           <p className="mt-3 font-serif text-lg italic leading-snug text-sacred/75 md:text-xl">
             {f.act}
-          </p>
-          <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.25em] text-sacred/35">
-            A video of this god&rsquo;s motion will play here.
           </p>
         </div>
       </section>

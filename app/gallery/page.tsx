@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { forms } from "@/content/forms";
+import { forms } from "@/services/karuppu";
 import { sections } from "@/content/sections";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -17,7 +17,7 @@ const data = sections.gallery;
 export const metadata: Metadata = {
   title: data.title,
   description:
-    "The hall of motion — the six fires as dark, blurred teasers. The clear stills live on each god's page; the motion is coming. Enter a fire to see a god.",
+    "A veiled gallery of six forms. Follow each shadow into its own sanctum to see the full artistic study.",
 };
 
 /**
@@ -59,9 +59,8 @@ export default function GalleryPage() {
             {data.title}
           </SectionHeading>
           <p className="mt-8 max-w-2xl font-serif text-xl italic leading-relaxed text-sacred/75 md:text-2xl">
-            The fires of Karuppu, gathered in one dark hall. You will not see a
-            face here — each god is shown clearly only on his own page. This is a
-            doorway, and a promise of motion to come.
+            The forms of Karuppu, gathered in one dark hall. Each remains veiled
+            here; follow a shadow into its own sanctum to see the full study.
           </p>
         </div>
       </section>
@@ -113,8 +112,8 @@ export default function GalleryPage() {
             </span>
           </div>
           <p className="mt-6 text-sm leading-relaxed text-sacred/55">
-            Six fires are gathered here. Tradition speaks of many more, and they
-            will be added in time.
+            Six forms are gathered here. Devotional tradition remembers the
+            guardian through many more names and local forms.
           </p>
         </ScrollReveal>
       </section>
